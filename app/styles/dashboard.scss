@@ -1,0 +1,63 @@
+@import "base";
+
+body{
+  font-family: Arial;
+}
+
+#control-area{
+  @include background(image-url("control_bg.png"));
+  min-height: 36px;
+  
+  a, span {
+    color: $font-color;
+    font-size: 12px;
+  }
+
+  li {
+    width: 150px;
+
+    a {
+      padding-top: 10px;
+      padding-bottom: 6px;
+      text-align: center;
+    }
+    
+    .icon-vertical-bar{
+      width: 1px;
+      height: 36px;
+      background-color: #3b444d;
+      float: right;
+    
+      &.shadow{
+        background-color: #262d35;
+      }
+    }
+
+    &#tv, &#email{
+      a:before{
+        padding-right: 8px;
+        vertical-align: sub;
+      }
+    } 
+    
+    a:before{ 
+      content: image-url("tv.png");
+    }
+    
+    &#email a:before{ 
+      content: image-url("email.png"); 
+    }
+    
+    &#add-widget a:before{ 
+      content: '+';
+      font-size: 16px;
+      font-weight: bold;
+      padding-right: 8px;
+      vertical-align: middle;
+    }
+  }
+
+  .navbar-collapse{
+    padding: 0px;
+  }
+}

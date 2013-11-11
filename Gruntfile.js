@@ -57,6 +57,16 @@ module.exports = function (grunt) {
                     'test/spec/**/*.js'
                 ]
             },
+            eco: {
+                files: [
+                    '<%= yeoman.app %>/scripts/templates/**/*.eco',
+                    '<%= yeoman.app %>/*.html',
+                    '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+                    '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}'
+                ],
+                tasks: ['eco', 'coffee:dist']
+            },
             jst: {
                 files: [
                     '<%= yeoman.app %>/scripts/templates/*.ejs'
@@ -167,7 +177,8 @@ module.exports = function (grunt) {
                 javascriptsDir: '<%= yeoman.app %>/scripts',
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
                 importPath: '<%= yeoman.app %>/bower_components',
-                relativeAssets: true
+                relativeAssets: false,
+                raw: 'http_images_path = \'../images\'\nhttp_generated_images_path = \'../images\'\n'                     
             },
             dist: {},
             server: {
@@ -256,17 +267,17 @@ module.exports = function (grunt) {
         bower: {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
-			}
-		},
-		eco: {
-			compile: {
-				files: {
-					'.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/{,*/}*.eco']
-				}
-			}
-		},
-		jst: {
-			compile: {
+			      }
+		    },
+        eco: {
+            app: {
+                files: {
+                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/{,*/}*.eco']
+                }
+            }
+        },
+		    jst: {
+			      compile: {
                 files: {
                     '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
                 }
@@ -301,7 +312,7 @@ module.exports = function (grunt) {
                 'clean:server',
                 'coffee',
                 'createDefaultTemplate',
-                'jst',
+                'eco',
                 'compass:server',
                 'connect:test',
                 'watch:livereload'
@@ -312,7 +323,7 @@ module.exports = function (grunt) {
             'clean:server',
             'coffee:dist',
             'createDefaultTemplate',
-            'jst',
+            'eco',
             'compass:server',
             'connect:livereload',
             'open',
@@ -324,7 +335,7 @@ module.exports = function (grunt) {
         'clean:server',
         'coffee',
         'createDefaultTemplate',
-        'jst',
+        'eco',
         'compass',
         'connect:test',
         'mocha',
@@ -335,7 +346,7 @@ module.exports = function (grunt) {
         'clean:dist',
         'coffee',
         'createDefaultTemplate',
-        'jst',
+        'eco',
         'compass:dist',
         'useminPrepare',
         'imagemin',
