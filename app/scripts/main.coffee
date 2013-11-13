@@ -5,8 +5,9 @@ window.dashboard =
 	Routers: {}
 	init: ->
 		'use strict'
-		console.log 'Hello from Backbone!'
-		new this.Views.AppView()
+		# init routes
+		
+		@app = new this.Views.AppView()
 
 $ ->
 	'use strict'

@@ -13,6 +13,8 @@
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/dashboard.css">
+        <link rel="stylesheet" href="bower_components/gridster/dist/jquery.gridster.css">  
+        <link rel="stylesheet" href="styles/gridster.css">   
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
@@ -22,46 +24,13 @@
       <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgr        ade your browser</a> to improve your experience.</p>
       <![endif]-->
-      <div id="dashboard-app">
+      <div id="dashboard">
 
-        <!-- Top navigation control area -->
-        <nav id="control-area" class="navbar navbar-inverse navbar-default navbar-static-top" role="navigation">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li id="tv">
-                <span class="icon-vertical-bar shadow"></span>
-                <span class="icon-vertical-bar"></span>
-                <a href="#">TV Mode</a>
-              </li>
-              <li id="email">
-                <span class="icon-vertical-bar shadow"></span>
-                <span class="icon-vertical-bar"></span>
-                <a href="#">E-mail snapshot</a>          
-              </li>
-              <li id="add-widget">
-                <span class="icon-vertical-bar shadow"></span>
-                <span class="icon-vertical-bar"></span>
-                <a href="#">Add widget</a>
-              </li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </nav>
-        
-        <div id="alert-placeholder" class="container"></div>
-        
-        <div id="widgets" class="jumbotron">
-            widgets here
+        <div id="navigation"></div>
+        <div id="alert"></div>
+        <div id="widgets">
+          <div id="widgets-container" class="gridster" data-columns="4" data-column-size="220"></div>
+          <div id="new-widget-modal"></div>
         </div>
       </div>
 
@@ -79,7 +48,8 @@
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
-        <script src="bower_components/screenfull/dist/screenfull.js"</script>
+        <script src="bower_components/screenfull/dist/screenfull.js"></script>
+        <script src="bower_components/gridster/dist/jquery.gridster.js"></script>
         
         <!-- endbuild -->
 
@@ -102,8 +72,12 @@
         <script src="scripts/main.js"></script>
         <script src="scripts/templates.js"></script>
         <script src="scripts/views/app.js"></script>
-        <script src="scripts/views/ControlArea.js"></script>
-        <script src="scripts/views/control.js"></script>
+        <script src="scripts/views/navigation.js"></script>
+        <script src="scripts/models/widget.js"></script>
+        <script src="scripts/collections/widgets.js"></script>
+        <script src="scripts/views/widget.js"></script>
+        <script src="scripts/views/widgets.js"></script>
+        <script src="scripts/views/alert.js"></script>
         <!-- endbuild -->
 </body>
 </html>

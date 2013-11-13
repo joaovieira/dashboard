@@ -1,0 +1,5 @@
+<!-- <div class="drag-handle">+</div> -->
+<div class="widget-content">
+    <%= "#{@widget.get('text').toUpperCase()}" %>
+</div>
+

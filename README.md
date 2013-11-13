@@ -1,4 +1,4 @@
-Dashboard Front-End Simple Page Application
+Dashboard Front-End Single Page Application
 ===========
 
 Backbone.js with CoffeeScript for the MV* structure. jQuery, Gridster.js, Sass and Bootstrap for the UI.
