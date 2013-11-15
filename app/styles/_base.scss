@@ -1,8 +1,23 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
+/* text colors */
 $font-color: #9ba8b4;
 $link-color: #9ba8b4;
 $link-hover-color: #46657c;
+$title-color: #246597;
+$title-line-color: #abcbe4;
+
+/* icons */
+$icon-color: #c6d0d7;
+$add-widget-color: #ebf0f4;
+
+/* tables */
+$table-bg-hover: #d5dee5;
+$table-bg-accent: #f5f7f9;
+$table-cell-padding: 7px;
+
+/* popover */
+$popover-color: #2b343c;
 
 @import "compass";
 @import 'sass-bootstrap/lib/bootstrap';

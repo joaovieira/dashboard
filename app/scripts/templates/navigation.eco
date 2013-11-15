@@ -26,7 +26,7 @@
       <li id="new-widget">
         <span class="icon-vertical-bar shadow"></span>
         <span class="icon-vertical-bar"></span>
-        <a href="#">Add widget</a>
+        <a href="#new">Add widget</a>
       </li>
     </ul>
   </div><!-- /.navbar-collapse -->

@@ -7,7 +7,6 @@ class dashboard.Views.NavigationView extends Backbone.View
   events:
     'click li#tv': 'enterFullScreen'
     'click li#email': 'prepareEmail'
-    'click li#new-widget': 'newWidget'
     
   initialize: ->
     @render()
@@ -21,4 +20,4 @@ class dashboard.Views.NavigationView extends Backbone.View
     if screenfull.enabled then screenfull.request $('#widgets')[0] else @alertError()
     
   alertError: ->
-    @trigger 'alert', text: 'Oh snap! Full screen not suported.'
+    @trigger 'alert', { type: 'danger', text: 'Oh snap! Full screen not suported.' }

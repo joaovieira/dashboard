@@ -3,34 +3,36 @@
 class dashboard.Views.WidgetView extends Backbone.View
 
   tagName: 'li'
-  className: 'widget add'
-  
-  attributes:
-    handleClass: 'handle'
+  className: 'widget'
   
   template: JST['app/scripts/templates/widget']
 
-  events:
+  genericEvents:
     'click .delete': 'remove'
-    'mousedown': 'preventDrag'
-            
+    'click .settings': 'popoverSettings'
+    
+  
   initialize: ->
-    ###
-    _.bindAll @, 'render', 'unrender', 'remove'
+	  # bind events
+    @model.on 'change', @render
+    @model.on 'remove', @unrender
+    
+    @defaultSize = [1,1]
 
-    @model.bind 'change', @render
-    @model.bind 'remove', @unrender
-    ###
 
   render: ->
     @$el.html @template widget: @model
     this
-    
-  preventDrag: (e) ->
-    e.stopPropagation() if e.target.className.indexOf(@attributes.handleClass) is -1
 
-  unrender: ->
+
+  unrender: =>
     @$el.remove()
-    
-  remove: ->
+	  this
+
+
+  remove: =>
     @model.destroy()
+    
+    
+  popoverSettings: ->
+    

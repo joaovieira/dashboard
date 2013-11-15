@@ -1,0 +1,141 @@
+@import "base";
+
+a, a:hover, a:visited {
+  text-decoration: none
+}
+
+.widget{
+  font-size: 9pt;
+  
+  .widget-header{
+    font-size: 11pt;
+    font-weight: bold;
+    height: 30px;  
+    color: $title-color;
+    border-bottom: $title-line-color 1px solid;
+    
+    .wrapper{
+      padding: 6px 15px;
+    }
+  }
+  
+  .widget-controls {
+    float:right;
+  }
+  
+  .widget-content{
+    .wrapper{
+      table{
+        width: 100%;
+      }
+      
+      .title{
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.widget.add-widget {
+  .widget-content{    
+    display: table;
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+    
+    .wrapper{
+      font-weight: bold;   
+      background-color: $add-widget-color;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.4s ease;
+      
+      &:hover{
+        background: $table-bg-hover;
+        transition: 0.4s background ease;
+        
+        a{
+          color: $link-hover-color;
+          transition: 0.4s color ease;  
+        }
+      }
+    }
+  }
+}
+
+.table {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border-top: 0;
+        
+        &:first-child{
+          text-align: left;    
+          padding-left: 20px;
+        }
+        
+        &:last-child{
+          text-align: right;
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+}
+
+
+.clickable{
+  cursor: pointer;
+}
+
+
+.title-text{
+  position: relative;
+  top: -2px;
+}
+
+
+.widget-controls {
+  handle, span{
+    margin-left: 8px;
+  }
+  
+  handle {
+    cursor: move;
+  }
+}
+
+.title-icon {
+  margin-right: 8px;
+}
+
+/* icons */
+
+
+#last-inputs-title-img{
+  content: image-url("icons/graph.png");
+}
+
+.widget-handle-img{
+  content: image-url("icons/move_ctrl.png");
+  
+  &:hover, &:active{  content: image-url("icons/move_ctrl_hover.png"); }
+}
+
+.widget-settings-img{
+  content: image-url("icons/settings_ctrl.png");
+  
+  &:hover, &:active{ content: image-url("icons/settings_ctrl_hover.png"); }
+}
+
+.favorite-img{
+  content: image-url("icons/star.png");
+  
+  &:hover{ content: image-url("icons/star_hover.png");}
+  &.selected{ content: image-url("icons/star_selected.png");}
+}

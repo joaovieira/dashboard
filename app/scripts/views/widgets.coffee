@@ -1,59 +1,71 @@
 'use strict';
 
-json = {
-  "widgets": [
-    { "id": 1, "category": "category-1", "title": "title-1" },
-    { "id": 2, "category": "category-2", "title": "title-2" },
-    { "id": 3, "category": "category-2", "title": "title-3" },
-    { "id": 4, "category": "category-3", "title": "title-4" },
-    { "id": 5, "category": "category-4", "title": "title-5" },
-    { "id": 6, "category": "category-4", "title": "title-6" }
-  ]
-}
-
 class dashboard.Views.WidgetsView extends Backbone.View
 
-  events:
-    'click li#new-widget': 'newWidget'
-    
   initialize: ->
-    @collection = new dashboard.Collections.Widgets json.widgets
-    @container = @$('#widgets-container')
-    #@collection.fetch
-  
-    ##@collection.bind 'add', @appendWidget
-    
-    columns = @container?[0].getAttribute('data-columns')
-    column_size = @container?[0].getAttribute('data-column-size')
-    
+    @collection = new dashboard.Collections.Widgets []
+
+    # init gridster
     options =
-      widget_margins: [10, 10],
-      widget_base_dimensions: [parseInt(column_size), parseInt(column_size)]
-      max_cols: parseInt(columns),
+      widget_margins: [15, 15],
+      widget_base_dimensions: [@$el.data('column-size'), @$el.data('column-size')]
+      max_cols: @$el.data 'columns'
+      draggable:
+        handle: 'handle'
       resize:
         enabled: true,
         max_size: [2, 2]
-        
-    @container.append('<ul></ul>')    
-    @gridster = @$('.gridster ul').gridster(options).data 'gridster'
-    _(@collection.models).each (widget) => @appendWidget data: widget, isNew: false
+
+    @$el.append('<ul></ul>').hide()    
+    @gridster = @$('ul').gridster(options).data('gridster')
+
+    # bind events
+    @collection.on 'add', @addWidget
+
+    # init widgets
+    @addAddWidget()
+    @collection.fetch()
     
-    addWidget = new dashboard.Models.Widget class: 'add-widget', text: 'Add widget'
-    @appendWidget data: addWidget, isNew: false
+  
+  addWidget: (widget) =>
+    newWidget = @getView widget
     
-        
-  createWidget: (formData)->
-    @appendWidget formData
-    @collection.create formData
+    # get addWidget if any
+    addWidget = @gridster.$widgets.filter('.add-widget')
+    
+    if addWidget.length is 1  
+  	  # replace addWidget with new one and add addWidget again
+  	  @overrideWidget addWidget, newWidget
+  	  @addAddWidget()
+    else
+  	  @gridster.add_widget newWidget.render().el, newWidget.defaultSize[0], newWidget.defaultSize[1],
+  	   null, null, newWidget.maxSize ?= []
 
 
-  appendWidget: (widget) ->  
-    newWidget = new dashboard.Views.WidgetView model: widget.data
+  createWidget: (modalData) ->
+    @collection.create modalData
     
-    if widget.isNew
-      @gridster.remove_widget( $('.gridster li:last') ) if widget.isNew
-      addWidget = new dashboard.Views.WidgetView model: widget.data
     
-    @gridster.add_widget newWidget.render().el
+  overrideWidget: (oldW, newW) ->
+  	col = oldW.data 'col'
+  	row = oldW.data 'row'
+
+  	@gridster.remove_widget oldW, @showLast
+  	@gridster.add_widget newW.render().el, newW.defaultSize[0], newW.defaultSize[1], col, row, newW.maxSize ?= []
+
+    # pass gridster el to view
     
-    @gridster.add_widget addWidget?.render().el if widget.isNew
+
+  addAddWidget: ->
+  	@collection.add new dashboard.Models.AddWidget()
+  	
+  
+  getView: (model) ->
+    switch model.get 'type'
+      when 'LastInputs' then new dashboard.Views.LastInputsWidgetView model: model
+      when 'Add' then new dashboard.Views.AddWidgetView model: model
+      else new dashboard.Views.WidgetView model: model
+        
+        
+  showLast: (e) =>
+    @$el.fadeIn() if @gridster.$widgets.length is @collection.length
