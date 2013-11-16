@@ -1,62 +1,55 @@
 @import "base";
 @import "gridster";
 @import "widgets";
+@import "modal";
 
 body {
   font-family: Arial;
   color: $link-color;
 }
 
-handle, i{
-  color: $icon-color;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-  color: $link-color;
-  
-  &:hover, &:focus{
-    color: $link-hover-color;
-    i{
-      color: $link-color;
-    }
-  };
-}
-
-.navbar{
+.navbar-inverse {
   @include background(image-url("control_bg.png"));
   min-height: 36px;
   margin-bottom: 0px;
-  
-  a, span {
-    font-size: 9pt;
-  }
-
-  li {
-    width: 150px;
-
-    a {
-      padding: 8px 0px;
-      text-align: center;
-      
-      i{
-          padding-right: 6px;
-      }
-    }
-    
-    .icon-vertical-bar{
-      width: 1px;
-      height: 36px;
-      background-color: #3b444d;
-      float: right;
-    
-      &.shadow{
-        background-color: #262d35;
-      }
-    }
-  }
-
+   
   .navbar-collapse{
     padding: 0px;
+    
+    .navbar-nav li {
+      width: 150px;
+      font-size: 9pt;
+
+      &:hover{
+        background: rgba(246, 247, 249, .1);  
+      }
+
+      a {
+        padding: 8px 0px;
+        text-align: center;
+        color: $font-color;
+
+        &:hover, &:focus{  
+          color: $font-color;
+        }
+
+        i{
+            color: $font-color;
+            padding-right: 6px;
+        }
+      }
+
+      .icon-vertical-bar{
+        width: 1px;
+        height: 36px;
+        background-color: #3b444d;
+        float: right;
+
+        &.shadow{
+          background-color: #262d35;
+        }
+      }
+    }
   }
 }
 

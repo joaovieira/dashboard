@@ -12,11 +12,17 @@ class dashboard.Views.AppView extends Backbone.View
 	  
 	  # bind events
 	  @listenTo @menu, 'alert', @showAlert
-	  @listenTo @widgets, 'newWidget', @showModal
+	  
+	  
+	home: ->  
+	  @$('#alert').show()
 	  
 	  
 	showAlert: (message) =>
-	  @$('#alert').html new dashboard.Views.AlertView(message).render().el
+	  alert = new dashboard.Views.AlertView(message)
+	  @$('#alert').html(alert.render().el).show()
 	
 	
 	showModal: ->
+	  modal = new dashboard.Views.NewWidgetModalView()
+	  @$('#new-widget-modal').html(modal.render().el)

@@ -1,25 +1,44 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
-
-/* text colors */
-$font-color: #9ba8b4;
-$link-color: $font-color;
-$link-hover-color: #46657c;
-$title-color: #246597;
-$title-line-color: #abcbe4;
-
-/* icons */
-$icon-color: #c6d0d7;
-$add-widget-color: #ebf0f4;
-
-/* tables */
-$table-bg-hover: #d5dee5;
-$table-bg-accent: #f5f7f9;
-$table-cell-padding: 7px;
-
-/* popover */
-$popover-color: #2b343c;
-
 @import "compass";
 @import 'sass-bootstrap/lib/bootstrap';
 
-// etc.
+/* text colors */
+$font-color:                    #9ba8b4;
+$link-color:                    $font-color;
+$link-hover-color:              #46657c;
+$title-color:                   #246597;
+$title-line-color:              #abcbe4;
+
+/* icons */
+$icon-color:                    #c6d0d7;
+$add-widget-color:              #ebf0f4;
+
+/* tables */
+$table-bg-hover:                #d5dee5;
+$table-bg-accent:               #f5f7f9;
+$table-cell-padding:            7px;
+
+/* thumbnails */
+
+/* modal */
+$modal-text-color:              #9a9a9a;
+$modal-title-padding:           10px 25px;
+$modal-inner-padding:           15px 25px;
+$modal-header-border-color:     #c4c4c4;
+
+/* breadcrumbs */
+$breadcrumb-bg:                 transparent;
+$breadcrumb-color:              $link-hover-color;
+$breadcrumb-active-color:       $modal-text-color;
+$breadcrumb-separator:          ">";
+
+/* buttons */
+$btn-default-color:              #333 !default;
+$btn-default-bg:                 #e2e2e2;
+$btn-default-border:             $modal-header-border-color;
+
+$btn-primary-color:              #fff !default;
+$btn-primary-bg:                 #3075aa;
+
+
+/* popover */
+$popover-color: #2b343c;

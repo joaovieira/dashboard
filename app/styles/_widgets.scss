@@ -6,6 +6,7 @@ a, a:hover, a:visited {
 
 .widget{
   font-size: 9pt;
+  overflow: hidden;
   
   .widget-header{
     font-size: 11pt;
@@ -88,6 +89,9 @@ a, a:hover, a:visited {
   }
 }
 
+handle, i{
+  color: $icon-color;
+}
 
 i.clickable{
   cursor: pointer;

@@ -1,5 +1,3 @@
-@import "base";
-
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -7,8 +5,14 @@
     padding: 0.2em 0;
 }
 
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+}
+
 /* Space out content a bit */
 body {
+  background: #fafafa;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */

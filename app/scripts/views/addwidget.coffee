@@ -6,6 +6,11 @@ class dashboard.Views.AddWidgetView extends Backbone.View
   className: 'widget add-widget'
 
   template: JST['app/scripts/templates/addwidget']
+  
+  
+  genericEvents:
+    'click .widget-content': 'newWidget'
+    
 
   initialize: ->
     @events = _.extend({}, @genericEvents, @events)
@@ -18,3 +23,6 @@ class dashboard.Views.AddWidgetView extends Backbone.View
   render: ->
     @$el.html @template widget: @model
     this
+    
+  newWidget: ->
+    dashboard.router.navigate 'new', { trigger: true }

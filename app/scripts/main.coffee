@@ -5,11 +5,14 @@ window.dashboard =
 	Routers: {}
 	init: ->
 		'use strict'
-		# init routes
 		
-		@app = new this.Views.AppView()
+		# init app view
+		@appView = new this.Views.AppView()
+		
+		# init routes
+		@router = new this.Routers.AppRouter()
+		Backbone.history.start();
 
 $ ->
 	'use strict'
 	dashboard.init();
-	Backbone.history.start();
