@@ -6,9 +6,6 @@ class dashboard.Views.LastInputsWidgetView extends Backbone.View
   className: 'widget lastinputs-widget'
 
   template: JST['app/scripts/templates/lastinputswidget']
-
-  events:
-    'click tr': 'highlight'
   
   
   initialize: ->
@@ -19,16 +16,9 @@ class dashboard.Views.LastInputsWidgetView extends Backbone.View
     
     
   render: ->
-    @$el.html @template widget: @model, getFavoriteClass: @getFavoriteClass 
+    @$el.html @template widget: @model
+    @model.inputs.each (input) ->
+      inputView = new dashboard.Views.InputView model: input
+      @$('#inputs').append inputView.render().el
+    , this
     this
-    
-    
-  getFavoriteClass: (fav) ->
-    className = "favorite-img clickable"
-    className += " selected" if fav
-    className
-      
-      
-  highlight: (e) ->
-    row = @$(e.currentTarget)
-    row.toggleClass('active').siblings().removeClass 'active'

@@ -2,7 +2,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 /* text colors */
 $font-color: #9ba8b4;
-$link-color: #9ba8b4;
+$link-color: $font-color;
 $link-hover-color: #46657c;
 $title-color: #246597;
 $title-line-color: #abcbe4;

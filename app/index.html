@@ -11,10 +11,10 @@
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="bower_components/gridster/dist/jquery.gridster.css"> 
         <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/dashboard.css">
-        <link rel="stylesheet" href="bower_components/gridster/dist/jquery.gridster.css">  
-        <link rel="stylesheet" href="styles/gridster.css">   
+        <link rel="stylesheet" href="styles/dashboard.css"> 
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
         <!-- endbuild -->
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
@@ -26,9 +26,48 @@
       <![endif]-->
       <div id="dashboard">
 
-        <div id="navigation"></div>
+        <div id="navigation">
+          <!-- Top navigation control area -->
+          <nav id="control-area" class="navbar navbar-inverse navbar-default navbar-static-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li id="tv">
+                  <span class="icon-vertical-bar shadow"></span>
+                  <span class="icon-vertical-bar"></span>
+                  <a href="#"><i class="fa fa-desktop fa-lg fa-fw"></i> TV Mode</a>
+                </li>
+                <li id="email">
+                  <span class="icon-vertical-bar shadow"></span>
+                  <span class="icon-vertical-bar"></span>
+                  <a href="#"><i class="fa fa-picture-o fa-lg fa-fw"></i> E-mail snapshot</a>          
+                </li>
+                <li id="new-widget">
+                  <span class="icon-vertical-bar shadow"></span>
+                  <span class="icon-vertical-bar"></span>
+                  <a href="#new"><i class="fa fa-plus fa-fw"></i> Add widget</a>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </nav>
+        </div>
+        
         <div id="alert"></div>
-        <div id="widgets" class="gridster" data-columns="4" data-column-size="220"></div>
+        
+        <div id="widgets" class="gridster" data-columns="4" data-column-size="220">
+          <ul id="widgets-list"></ul>
+        </div>
+        
         <div id="new-widget-modal"></div>
       </div>
 
@@ -80,6 +119,9 @@
         <script src="scripts/views/addwidget.js"></script>
         <script src="scripts/models/lastinputswidget.js"></script>
         <script src="scripts/views/lastinputswidget.js"></script>
+        <script src="scripts/models/input.js"></script>
+        <script src="scripts/collections/inputs.js"></script>
+        <script src="scripts/views/input.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -15,8 +15,7 @@ class dashboard.Views.WidgetsView extends Backbone.View
       resize:
         enabled: true,
         max_size: [2, 2]
-
-    @$el.append('<ul></ul>').hide()    
+   
     @gridster = @$('ul').gridster(options).data('gridster')
 
     # bind events

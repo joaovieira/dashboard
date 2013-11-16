@@ -1,9 +1,14 @@
 @import "base";
-@import "widgets/widgets";
+@import "gridster";
+@import "widgets";
 
-body{
+body {
   font-family: Arial;
   color: $link-color;
+}
+
+handle, i{
+  color: $icon-color;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -11,6 +16,9 @@ body{
   
   &:hover, &:focus{
     color: $link-hover-color;
+    i{
+      color: $link-color;
+    }
   };
 }
 
@@ -27,9 +35,12 @@ body{
     width: 150px;
 
     a {
-      padding-top: 10px;
-      padding-bottom: 6px;
+      padding: 8px 0px;
       text-align: center;
+      
+      i{
+          padding-right: 6px;
+      }
     }
     
     .icon-vertical-bar{
@@ -42,30 +53,6 @@ body{
         background-color: #262d35;
       }
     }
-
-    &#tv, &#email{
-      a:before{
-        padding-right: 8px;
-        vertical-align: sub;
-      }
-    } 
-    
-    &#tv a:before{ 
-      content: image-url("icons/tv.png");
-    }
-    
-    &#email a:before{ 
-      content: image-url("icons/email.png"); 
-    }
-    
-    &#new-widget a:before{ 
-      content: '+';
-      font-size: 9pt;
-      color: $link-color;
-      font-weight: bold;
-      padding-right: 8px;
-      vertical-align: middle;
-    }
   }
 
   .navbar-collapse{
@@ -77,6 +64,7 @@ body{
   padding: 10px;
   width: 100%;
   height: 100%;
+  display: none;
 }
 
 .alert{
