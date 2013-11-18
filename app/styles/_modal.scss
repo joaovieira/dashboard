@@ -1,3 +1,7 @@
+.modal{
+  overflow-y: auto;
+}
+
 .modal-dialog {
   padding-top: 0px;
   width: 70%;
@@ -18,6 +22,10 @@
   }
 }
 
+.modal-body{
+  padding-bottom: 0px;
+}
+
 .modal-title{
   font-size: 11pt;
   color: $link-hover-color;
@@ -26,15 +34,19 @@
 .modal-top{
   margin-bottom: 12px;
   position: relative;
+  height: 34px;
   
   .search{
     float: right;
-    font-size: 9pt;
+    
+    .form-control, button{
+      font-size: 9pt;
+    }
   }
   
   > ol{
     position: absolute;
-    bottom: 0px;
+    bottom: 2px;
   }
 }
 
@@ -47,10 +59,6 @@
   }
 }
 
-.modal-body-content{
-  border: black 1px solid;
-}
-
 .modal-footer {
   margin-top: 0px;
   padding: $modal-inner-padding;
@@ -60,4 +68,57 @@
   .btn-add{
     display: none;
   }
+}
+
+.widget-description{
+  .caption {
+    h4{
+      font-size: 11pt;
+      font-weight: normal;
+      color: $breadcrumb-color;
+    }
+    
+    p{
+      font-size: 10pt;
+      color: $modal-text-color;
+    }
+  }
+}
+
+.widget-data{
+  .control-label{
+    color: #6a6a6a;
+    text-align: left;
+    font-weight: normal;
+    font-size: 11pt;
+  }
+  
+  .form-group{
+    margin-bottom: 30px;
+  }
+  
+  .help-block{
+    margin-bottom: -15px;
+    color: $modal-text-color;
+    font-size: 9pt;
+  }
+  
+  .form-control{
+    color: $modal-text-color;
+  }
+}
+
+.btn-default{
+  .bootstrap-select &, .bootstrap-select.open &{
+    color: $modal-text-color;
+    background-color: white;
+    border-color: $input-border;
+  }
+}
+
+
+/* category thumbnails */
+
+.cat1{
+  content: image-url("thumbnail.png");
 }

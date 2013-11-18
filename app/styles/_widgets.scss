@@ -56,11 +56,8 @@ a, a:hover, a:visited {
       &:hover{
         background: $table-bg-hover;
         transition: 0.4s background ease;
-        
-        a{
-          color: $link-hover-color;
-          transition: 0.4s color ease;  
-        }
+        color: $link-hover-color;
+        transition: 0.4s color ease;  
       }
     }
   }

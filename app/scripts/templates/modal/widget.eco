@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-sm-12 col-md-5 widget-description">
+    <div class="thumbnail">
+      <img src="" alt="<%= @widget.name %>" class="cat1">
+    </div>
+    <div class="caption">
+      <h4>Widget description</h3>
+      <p><%= @widget.description %></p>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-md-offset-1">
+    <form class="form-horizontal widget-data" role="form">
+      <div class="form-group">
+        <label for="inputName" class="col-sm-4 control-label">Name</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="inputName" placeholder="Name in dashboard">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputSite" class="col-sm-4 control-label">Site</label>
+        <div class="col-sm-8">
+          <select class="form-control" id="inputSite" placeholder="Site">
+            <option selected disabled>Select one</option>
+            <% for site in @widget.sites: %>  
+              <option value="<%= site.url %>"><%= site.name %></option>
+            <% end %>
+          </select>
+          <span class="help-block">Which site do you want to track?</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputRefresh" class="col-sm-4 control-label">Refresh times</label>
+        <div class="col-sm-8">
+          <select class="form-control" id="inputRefresh" placeholder="Refresh times">
+            <option selected disabled>Select one</option>
+            <option>15 minutos</option>
+            <option>30 minutos</option>
+            <option>60 minutos</option>
+            <option>2 horas</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

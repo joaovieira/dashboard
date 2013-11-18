@@ -24,5 +24,6 @@ class dashboard.Views.AddWidgetView extends Backbone.View
     @$el.html @template widget: @model
     this
     
+    
   newWidget: ->
     dashboard.router.navigate 'new', { trigger: true }

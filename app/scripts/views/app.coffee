@@ -9,9 +9,12 @@ class dashboard.Views.AppView extends Backbone.View
 	  # app default components
 	  @menu = new dashboard.Views.NavigationView el: $('#navigation')
 	  @widgets = new dashboard.Views.WidgetsView el: $('#widgets')
+	  @modal = new dashboard.Views.ModalView el: $('#new-widget-modal')
 	  
 	  # bind events
 	  @listenTo @menu, 'alert', @showAlert
+	  @listenTo @menu, 'new', @showModal
+	  @listenTo @widgets, 'new', @showModal
 	  
 	  
 	home: ->  
@@ -23,6 +26,6 @@ class dashboard.Views.AppView extends Backbone.View
 	  @$('#alert').html(alert.render().el).show()
 	
 	
-	showModal: ->
-	  modal = new dashboard.Views.NewWidgetModalView()
-	  @$('#new-widget-modal').html(modal.render().el)
+	addWidgetModal: (category = null, widget = null) ->
+	  @modal.prepare category, widget
+	  @modal.show()

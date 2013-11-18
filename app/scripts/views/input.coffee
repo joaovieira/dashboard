@@ -22,3 +22,4 @@ class dashboard.Views.InputView extends Backbone.View
     
   addFavorite: (e) ->
     @$(e.currentTarget).toggleClass 'selected'
+    e.stopPropagation()

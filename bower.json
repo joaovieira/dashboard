@@ -9,7 +9,8 @@
     "modernizr": "~2.6.2",
     "eco": "~1.0.3",
     "gridster": "~0.2.1",
-    "screenfull": "~1.1.0"
+    "screenfull": "~1.1.0",
+    "bootstrap-select": "~1.3.5"
   },
   "devDependencies": {}
 }

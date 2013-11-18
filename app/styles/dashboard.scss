@@ -53,6 +53,13 @@ body {
   }
 }
 
+
+:-webkit-full-screen #navigation { display: none }
+:-moz-full-screen #navigation { display: none }
+:-ms-full-screen #navigation { display: none }
+:-o-full-screen #navigation { display: none }
+:full-screen #navigation { display: none }
+
 #widgets{
   padding: 10px;
   width: 100%;

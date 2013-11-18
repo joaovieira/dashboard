@@ -1,6 +1,3 @@
-@import "compass";
-@import 'sass-bootstrap/lib/bootstrap';
-
 /* text colors */
 $font-color:                    #9ba8b4;
 $link-color:                    $font-color;
@@ -32,13 +29,27 @@ $breadcrumb-active-color:       $modal-text-color;
 $breadcrumb-separator:          ">";
 
 /* buttons */
-$btn-default-color:              #333 !default;
-$btn-default-bg:                 #e2e2e2;
-$btn-default-border:             $modal-header-border-color;
+$btn-default-color:             #333 !default;
+$btn-default-bg:                #e2e2e2;
+$btn-default-border:            $modal-header-border-color;
+$btn-primary-color:             #fff !default;
+$btn-primary-bg:                #3075aa;
 
-$btn-primary-color:              #fff !default;
-$btn-primary-bg:                 #3075aa;
+/* thumbnails */
+$thumbnail-padding:             5px;
+$thumbnail-bg:                  #e0e0e0;
+$thumbnail-border:              #e0e0e0;
+$thumbnail-border-radius:       2px;
+
+
+/* forms */
+/*$input-color: #adb2b6;
+$input-bg: transparent; */
+$input-border: #c6d1d7;
 
 
 /* popover */
 $popover-color: #2b343c;
+
+@import "compass";
+@import 'sass-bootstrap/lib/bootstrap';

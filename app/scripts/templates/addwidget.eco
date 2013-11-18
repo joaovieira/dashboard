@@ -1,5 +1,5 @@
 <div class="widget-content">
   <div class="wrapper">
-    <a href='#new'><%= "#{@widget.get('title').toUpperCase()}" %></a>
+    <%= "#{@widget.get('title').toUpperCase()}" %>
   </div>
 </div>

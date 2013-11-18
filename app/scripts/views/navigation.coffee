@@ -9,7 +9,7 @@ class dashboard.Views.NavigationView extends Backbone.View
     
   enterFullScreen: ->
     # for full screen use use screenfull.request() 
-    if not screenfull.enabled then screenfull.request $('#widgets')[0] else @alertError()
+    if screenfull.enabled then screenfull.request() else @alertError()
     
     
   alertError: ->

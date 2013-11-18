@@ -11,8 +11,9 @@ window.dashboard =
 		
 		# init routes
 		@router = new this.Routers.AppRouter()
-		Backbone.history.start();
+		@root = '/'
+		Backbone.history.start()
 
 $ ->
 	'use strict'
-	dashboard.init();
+	dashboard.init()
