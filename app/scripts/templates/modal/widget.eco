@@ -9,35 +9,38 @@
     </div>
   </div>
   <div class="col-sm-12 col-md-6 col-md-offset-1">
-    <form class="form-horizontal widget-data" role="form">
+    <form class="form-horizontal widget-data" id="createWidget" role="form">    
       <div class="form-group">
-        <label for="inputName" class="col-sm-4 control-label">Name</label>
+        <label for="name" class="col-sm-4 form-header">Name</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" id="inputName" placeholder="Name in dashboard">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Name in dashboard">
+          <label class='control-label' for='name'></label>
         </div>
       </div>
       <div class="form-group">
-        <label for="inputSite" class="col-sm-4 control-label">Site</label>
-        <div class="col-sm-8">
-          <select class="form-control" id="inputSite" placeholder="Site">
+        <label for="site" class="col-sm-4 form-header">Site</label>
+        <div class="col-sm-8">  
+          <select class="form-control" id="site" name="site" placeholder="Site">
             <option selected disabled>Select one</option>
             <% for site in @widget.sites: %>  
               <option value="<%= site.url %>"><%= site.name %></option>
             <% end %>
           </select>
+          <label class='control-label' for='site'></label>
           <span class="help-block">Which site do you want to track?</span>
         </div>
       </div>
       <div class="form-group">
-        <label for="inputRefresh" class="col-sm-4 control-label">Refresh times</label>
+        <label for="refreshTime" class="col-sm-4 form-header">Refresh times</label>
         <div class="col-sm-8">
-          <select class="form-control" id="inputRefresh" placeholder="Refresh times">
+          <select class="form-control" id="refreshTime" name="refreshTime" placeholder="Refresh times">
             <option selected disabled>Select one</option>
             <option>15 minutos</option>
             <option>30 minutos</option>
             <option>60 minutos</option>
             <option>2 horas</option>
           </select>
+          <label class='control-label' for='refreshTime'></label>
         </div>
       </div>
     </form>

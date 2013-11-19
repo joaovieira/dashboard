@@ -39,8 +39,11 @@
   .search{
     float: right;
     
-    .form-control, button{
+    .form-control, button {
       font-size: 9pt;
+    }
+    button{
+      line-height: 1.7;
     }
   }
   
@@ -86,7 +89,7 @@
 }
 
 .widget-data{
-  .control-label{
+  .form-header{
     color: #6a6a6a;
     text-align: left;
     font-weight: normal;
@@ -95,6 +98,10 @@
   
   .form-group{
     margin-bottom: 30px;
+    
+    .control-label{
+      display: none;
+    }
   }
   
   .help-block{
@@ -105,6 +112,27 @@
   
   .form-control{
     color: $modal-text-color;
+  }
+}
+
+.form-group.has-error{ 
+  .control-label{
+    font-size: 9pt;
+    padding-top: 0px;
+  }
+  
+  .btn{
+    border-color: #b94a48;
+  }
+  
+  .help-block{
+    color: #b94a48;
+  }
+}
+
+.dropdown-toggle{
+  .caret{
+    border-top-color: $breadcrumb-color;
   }
 }
 

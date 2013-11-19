@@ -13,6 +13,7 @@ class dashboard.Views.InputView extends Backbone.View
     
   render: ->
     @$el.html @template input: @model
+    @$('.fa-star').tooltip placement: 'bottom'
     this
   
       

@@ -10,7 +10,8 @@
     "eco": "~1.0.3",
     "gridster": "~0.2.1",
     "screenfull": "~1.1.0",
-    "bootstrap-select": "~1.3.5"
+    "bootstrap-select": "~1.3.5",
+    "backbone.syphon": "~0.4.1"
   },
   "devDependencies": {}
 }

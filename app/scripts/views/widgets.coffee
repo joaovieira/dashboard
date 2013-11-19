@@ -42,7 +42,7 @@ class dashboard.Views.WidgetsView extends Backbone.View
 
 
   createWidget: (modalData) ->
-    @collection.create modalData
+    @collection.add modalData
     
     
   overrideWidget: (oldW, newW) ->
@@ -51,8 +51,6 @@ class dashboard.Views.WidgetsView extends Backbone.View
 
   	@gridster.remove_widget oldW, @showLast
   	@gridster.add_widget newW.render().el, newW.defaultSize[0], newW.defaultSize[1], col, row, newW.maxSize ?= []
-
-    # pass gridster el to view
     
 
   addAddWidget: ->
