@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-sm-12 col-md-5 widget-description">
     <div class="thumbnail">
-      <img src="" alt="<%= @widget.name %>" class="cat1">
+      <img src="" alt="<%= @widget.name %>" class="<%= @widget.get 'name' %>">
     </div>
     <div class="caption">
       <h4>Widget description</h3>
-      <p><%= @widget.description %></p>
+      <p><%= @widget.get 'description' %></p>
     </div>
   </div>
   <div class="col-sm-12 col-md-6 col-md-offset-1">
@@ -22,8 +22,8 @@
         <div class="col-sm-8">  
           <select class="form-control" id="site" name="site" placeholder="Site">
             <option selected disabled>Select one</option>
-            <% for site in @widget.sites: %>  
-              <option value="<%= site.url %>"><%= site.name %></option>
+            <% for site in @widget.get 'sites': %>  
+              <option value="<%= site.url %>"><%= site.title %></option>
             <% end %>
           </select>
           <label class='control-label' for='site'></label>
@@ -35,10 +35,8 @@
         <div class="col-sm-8">
           <select class="form-control" id="refreshTime" name="refreshTime" placeholder="Refresh times">
             <option selected disabled>Select one</option>
-            <option>15 minutos</option>
-            <option>30 minutos</option>
-            <option>60 minutos</option>
-            <option>2 horas</option>
+            <option value="10000">10 segundos</option>
+            <option value="300000">30 segundos</option>
           </select>
           <label class='control-label' for='refreshTime'></label>
         </div>

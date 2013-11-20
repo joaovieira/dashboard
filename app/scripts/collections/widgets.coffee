@@ -1,7 +1,7 @@
 'use strict';
 
 class dashboard.Collections.Widgets extends Backbone.Collection  
-  url: '/api/widgets'
+  #localStorage: new Backbone.LocalStorage("savedWidgets")
   
   model: (attrs, options) ->
     switch attrs.type

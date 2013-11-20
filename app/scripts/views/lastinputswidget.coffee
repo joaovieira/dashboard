@@ -12,6 +12,10 @@ class dashboard.Views.LastInputsWidgetView extends Backbone.View
     @events = _.extend({}, @genericEvents, @events);
     @delegateEvents()
     
+    # bind model events
+    @model.on 'change', @render
+    @model.refresh()
+    
     @defaultSize = [2,1]
     
     

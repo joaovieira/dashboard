@@ -23,6 +23,13 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
     @inputs = new dashboard.Collections.Inputs()
     @inputs.on 'change', @save
     Backbone.Model.apply this, arguments
+    
+  
+  refresh: =>
+    $.getJSON @get('site'), (data) =>
+        @inputs.reset data
+        @trigger 'inputs:change'
+        setTimeout @refresh, @get 'refreshTime'
   
   
   parse: (data, options) ->

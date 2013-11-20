@@ -1,8 +1,8 @@
 <div class="row">
     <% for item in @thumbnails: %>
       <div class="col-sm-6 col-md-3">  
-        <a href="#new/<%= if @base? then "#{@base}/#{item.id}" else item.id %>" class="thumbnail">
-          <img src="" alt="<%= item.name %>" class="cat1">
+        <a href="#new/<%= if @base? then "#{@base}/#{item.get 'name'}" else item.get 'name' %>" class="thumbnail">
+          <img src="" alt="<%= item.get 'title' %>" class="<%= item.get 'name' %>">
         </a>
       </div>
     <% end %>

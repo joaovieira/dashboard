@@ -1,25 +1,5 @@
 'use strict';
 
-categories = [
-    name: 'Category 1'
-    id: 'category1'
-    widgets: [
-        name: 'Widget 1'
-        id: 'widget1'
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras egestas consectetur auctor. Suspendisse placerat tempus malesuada. Donec at convallis augue, at rutrum mauris. Sed a metus imperdiet, egestas orci ut, posuere est.'
-        sites: [
-          name: "Site 1"
-          url: "https://www.google.com"
-        ,
-          name: "Site 2"
-          url: "https://www.apple.com"
-        ]
-      ]
-  ]
-  
-  
-  
-
 class dashboard.Views.ModalView extends Backbone.View
   
   widgetTemplate: JST['app/scripts/templates/modal/widget']
@@ -32,21 +12,23 @@ class dashboard.Views.ModalView extends Backbone.View
   
   initialize: ->
     # fetch available widgets and categories
-    @categories = categories
+    @categories = new dashboard.Collections.Categories
     
     # init modal
     @$el.modal show: false
     
     @$el.on 'hidden.bs.modal', @returnHome
     
+    @categories.fetch()
+        
   
   show: ->
     @$el.modal('show')
     
   
   prepare: (category, widget) ->
-    @category = _.find(@categories, (cat) -> cat.id is category)
-    @widget = if @category then _.find(@category.widgets, (wid) -> wid.id is widget)
+    @category = @categories.findWhere name: category
+    @widget = if @category then @category.widgets.findWhere name: widget
     
     # get to initial state
     breadcrumbs = @$('.breadcrumb').empty()
@@ -58,11 +40,11 @@ class dashboard.Views.ModalView extends Backbone.View
     
     if @category
       breadcrumbs.find('li:last').removeClass('active').wrapInner "<a href='#new'></a>"
-      breadcrumbs.append "<li class='active'>#{@category.name}</li>"
+      breadcrumbs.append "<li class='active'>#{@category.get 'title'}</li>"
     
     if @widget
-      breadcrumbs.find('li:last').removeClass('active').wrapInner "<a href='#new/#{@category.id}'></a>"
-      breadcrumbs.append "<li class='active'>#{@widget.name}</li>"
+      breadcrumbs.find('li:last').removeClass('active').wrapInner "<a href='#new/#{@category.get 'name'}'></a>"
+      breadcrumbs.append "<li class='active'>#{@widget.get 'title'}</li>"
       @$('.search').hide()
       @$('.btn-add').attr('form', 'createWidget').show()
       
@@ -71,9 +53,9 @@ class dashboard.Views.ModalView extends Backbone.View
     if @widget
       partial = @widgetTemplate widget: @widget
     else if @category
-      partial = @thumbnailTemplate thumbnails: @category.widgets, base: @category.id
+      partial = @thumbnailTemplate thumbnails: @category.widgets.models, base: @category.get 'name'
     else
-      partial = @thumbnailTemplate thumbnails: @categories
+      partial = @thumbnailTemplate thumbnails: @categories.models
     
     @$('.modal-body-content').fadeTo 400, 0, ->
       $(this).html(partial).find('select').selectpicker()

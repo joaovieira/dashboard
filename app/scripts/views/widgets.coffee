@@ -23,7 +23,7 @@ class dashboard.Views.WidgetsView extends Backbone.View
 
     # init widgets
     @addAddWidget()
-    @collection.fetch()
+    #@collection.fetch()
     
   
   addWidget: (widget) =>
@@ -40,6 +40,8 @@ class dashboard.Views.WidgetsView extends Backbone.View
   	  @gridster.add_widget newWidget.render().el, newWidget.defaultSize[0], newWidget.defaultSize[1],
   	   null, null, newWidget.maxSize ?= []
 
+    @showLast()
+    
 
   createWidget: (modalData) ->
     @collection.add modalData
