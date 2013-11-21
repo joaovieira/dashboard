@@ -120,9 +120,94 @@ handle, .clickable{
   margin-right: 8px;
 }
 
+.widget-content .loading{
+  text-align: center;
+}
+
 /* icons */
 
 .fa-star.clickable{
   &:hover{ color: $link-color;}
   &.selected{ color: $link-hover-color; }
+}
+
+/* flip */
+
+.widget {
+	position: relative;
+
+	-webkit-perspective: 600px;
+	-moz-perspective: 600px;
+					perspective: 600px;
+}
+/* -- make sure to declare a default for every property that you want animated -- */
+/* -- general styles, including Y axis rotation -- */
+.widget .front {
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 900;
+	width: inherit;
+	height: inherit;
+
+	-webkit-transform: rotateX(0deg) rotateY(0deg);
+	-moz-transform: rotateX(0deg) rotateY(0deg);
+	transform: rotateX(0deg) rotateY(0deg);
+
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	/* -- transition is the magic sauce for animation -- */
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+.widget.flip .front {
+	z-index: 900;
+
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+
+	box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.widget .back {
+	float: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 800;
+	width: inherit;
+	height: inherit;
+
+	-webkit-transform: rotateY(-180deg);
+	-webkit-transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+
+	-moz-transform: rotateY(-180deg);
+	-moz-transform-style: preserve-3d;
+	-moz-backface-visibility: hidden;
+
+	transform: rotateY(-180deg);
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+
+	/* -- transition is the magic sauce for animation -- */
+	-webkit-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+.widget.flip .back {
+	z-index: 1000;
+  background: $table-bg-accent;
+
+	-webkit-transform: rotateX(0deg) rotateY(0deg);
+	-moz-transform: rotateX(0deg) rotateY(0deg);
+	transform: rotateX(0deg) rotateY(0deg);
 }

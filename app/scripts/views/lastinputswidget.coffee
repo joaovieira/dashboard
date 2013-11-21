@@ -4,14 +4,12 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
   
   inputTemplate: JST['app/scripts/templates/lastinput']
   
-  events:
-    'click .fa-star': 'addFavorite'
-    
+  events: _.extend
+      'click .fa-star': 'addFavorite'
+    , dashboard.Views.WidgetView.prototype.events
+  
     
   initialize: ->
-    @events = _.extend({}, @genericEvents, @events);
-    @delegateEvents()
-    
     @defaultSize = [2,1]
     
     # bind model events
@@ -27,10 +25,10 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
     
     
   refresh: =>
-    @$('#inputs').empty()
+    @$('#inputs').html('<table class="table table-striped table-hover"></table>')
     @model.inputs.each (input) ->
       inputView = new dashboard.Views.LastInputView model: input
-      @$('#inputs').append inputView.render().el
+      @$('#inputs table').append inputView.render().el
     , this
     
     

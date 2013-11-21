@@ -3,7 +3,7 @@
 class dashboard.Views.LastInputView extends Backbone.View
 
   tagName: 'tr'
-  class: 'input'
+  className: 'input'
   template: JST['app/scripts/templates/lastinput']
   
   
