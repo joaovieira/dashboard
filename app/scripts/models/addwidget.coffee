@@ -3,5 +3,5 @@
 class dashboard.Models.AddWidget extends dashboard.Models.Widget
 
   defaults:
-    type: 'Add'
+    type: 'add'
     title: 'Add widget'

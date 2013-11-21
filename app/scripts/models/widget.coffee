@@ -1,8 +1,7 @@
 'use strict';
 
 class dashboard.Models.Widget extends Backbone.Model
-  idAttribute: '_id'
 
   defaults:
-    type: 'Empty'
+    type: 'empty'
     title: 'Empty widget'

@@ -3,12 +3,19 @@
 class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget 
   
   defaults:
-    type: 'LastInputs'
+    icon: "fa-clock-o"
+    type: 'last-inputs'
     title: 'Last registered inputs'
     site: ''                          # set unpon addition
     name: ''                          # set unpon addition
-    refreshTime: 0                # set unpon addition
-   
+    refreshTime: 0                    # set unpon addition
+  
+  
+  constructor: ->
+    @inputs = new dashboard.Collections.LastInputs()
+    #@inputs.on 'change', @save
+    Backbone.Model.apply this, arguments
+         
   
   validate: (attrs) ->
     invalid = []
@@ -17,26 +24,26 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
     invalid.push 'refreshTime': 'Please select an interval' if not attrs.refreshTime
     
     invalid if invalid.length
-      
-    
-  constructor: ->
-    @inputs = new dashboard.Collections.Inputs()
-    @inputs.on 'change', @save
-    Backbone.Model.apply this, arguments
-    
   
+    
   refresh: =>
-    $.getJSON @get('site'), (data) =>
-        @inputs.reset data
-        @trigger 'inputs:change'
-        setTimeout @refresh, @get 'refreshTime'
-  
-  
+    $.getJSON @get('site'), (inputs) =>
+      for data in inputs
+        input = @inputs.findWhere feed_id: data.feed_id
+        if input?
+          input.set data
+        else
+          @inputs.add new dashboard.Models.LastInput data
+        
+      @trigger 'change'
+      setTimeout @refresh, @get 'refreshTime'
+
+
   parse: (data, options) ->
     @inputs.reset data.inputs
     data
-    
-  
+
+
   toJSON: ->
     attrs = _.clone @attributes
     attrs.inputs = @inputs.toJSON()

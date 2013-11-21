@@ -8,11 +8,14 @@ class dashboard.Views.WidgetView extends Backbone.View
   template: JST['app/scripts/templates/widget']
 
   genericEvents:
+    'click tr.input': 'highlight'
     'click .delete': 'remove'
     'click .settings': 'popoverSettings'
     
   
   initialize: ->
+    @className += @model.get 'type'
+    
 	  # bind events
     @model.on 'change', @render
     @model.on 'remove', @unrender
@@ -20,8 +23,9 @@ class dashboard.Views.WidgetView extends Backbone.View
     @defaultSize = [1,1]
 
 
-  render: ->
+  render: (inputTemplate) =>
     @$el.html @template widget: @model
+    @$('#inputs').append '<div>Loading...</div>'
     this
 
 
@@ -32,6 +36,10 @@ class dashboard.Views.WidgetView extends Backbone.View
 
   remove: =>
     @model.destroy()
+    
+       
+  highlight: (e) ->
+    @$(e.currentTarget).toggleClass('active').siblings().removeClass 'active'
     
     
   popoverSettings: ->

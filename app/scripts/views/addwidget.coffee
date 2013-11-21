@@ -3,7 +3,7 @@
 class dashboard.Views.AddWidgetView extends Backbone.View
 
   tagName: 'li'
-  className: 'widget add-widget'
+  className: 'widget add'
 
   template: JST['app/scripts/templates/addwidget']
   

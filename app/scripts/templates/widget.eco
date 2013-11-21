@@ -1,3 +1,18 @@
-<div class="widget-content">
-    <%= "#{@widget.get('title').toUpperCase()}" %>
+<div class="widget-header">
+  <div class="wrapper">
+    <div class="widget-controls">
+      <handle class="fa fa-arrows-alt"></handle>
+      <i class="fa fa-cogs clickable"></i>
+    </div>
+    <div class="widget-title">
+      <i class="title-icon fa <%= @widget.get 'icon' %> fa-lg"/>
+      <span class="title-text"><%= @widget.get 'title' %></span> 
+    </div>
+  </div>
 </div>
+<div class="widget-content">
+  <div class="wrapper">
+    <table id="inputs" class="table table-striped table-hover"></table>
+  </div>
+</div>
+
