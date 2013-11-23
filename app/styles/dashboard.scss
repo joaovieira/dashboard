@@ -3,6 +3,10 @@
 @import "widgets";
 @import "modal";
 
+html, body{
+  height: 100%;
+}
+
 body {
   font-family: Arial;
   color: $link-color;
@@ -59,6 +63,10 @@ body {
 :-ms-full-screen #navigation { display: none }
 :-o-full-screen #navigation { display: none }
 :full-screen #navigation { display: none }
+
+#dashboard{
+  height: 100%;
+}
 
 #widgets{
   padding: 10px;

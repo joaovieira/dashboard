@@ -10,6 +10,7 @@ class dashboard.Views.WidgetsView extends Backbone.View
       widget_margins: [15, 15],
       widget_base_dimensions: [@$el.data('column-size'), @$el.data('column-size')]
       max_cols: @$el.data 'columns'
+      min_rows: 2
       draggable:
         handle: 'handle'
       resize:

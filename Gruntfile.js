@@ -192,7 +192,7 @@ module.exports = function (grunt) {
                 fontsDir: '<%= yeoman.app %>/styles/fonts',
                 importPath: '<%= yeoman.app %>/bower_components',
                 relativeAssets: false,
-                raw: 'http_images_path = \'../images\'\nhttp_generated_images_path = \'../images\'\n'                     
+                raw: 'http_images_path = \'../images\'\nhttp_generated_images_path = \'../images\'\n'
             },
             dist: {},
             server: {
@@ -281,8 +281,8 @@ module.exports = function (grunt) {
         bower: {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
-			      }
-		    },
+            }
+        },
         eco: {
             app: {
                 files: {
@@ -290,8 +290,8 @@ module.exports = function (grunt) {
                 }
             }
         },
-		    jst: {
-			      compile: {
+        jst: {
+            compile: {
                 files: {
                     '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
                 }
