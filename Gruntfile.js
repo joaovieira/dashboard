@@ -21,6 +21,7 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     
     grunt.loadNpmTasks('grunt-connect-proxy');
+	grunt.loadNpmTasks('grunt-bower-install');
 
     // configurable paths
     var yeomanConfig = {
@@ -238,7 +239,7 @@ module.exports = function (grunt) {
                 files: {
                     '<%= yeoman.dist %>/styles/main.css': [
                         '.tmp/styles/{,*/}*.css',
-                        '.tmp/bower_components/{,*/}*.css',
+                        '.tmp/bower_components/**/*.css',
                         '<%= yeoman.app %>/styles/{,*/}*.css'
                     ]
                 }
@@ -275,20 +276,47 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt,json}',
                         '.htaccess',
-                        //'images/{,*/}*.{webp,gif}',
-                        'images/**/*',
+                        'images/{,*/}*.{webp,gif,png}',
+                        //'images/**/*',
                         'styles/fonts/{,*/}*.*',
                         'bower_components/sass-bootstrap/fonts/*.*',
-                        'bower_components/font-awesome/fonts/*.*'
+                        //'bower_components/font-awesome/fonts/*.*'
                     ]
                 }]
-            }
+            },
+			fonts:{
+				expand: true,
+                dot: true,
+				flatten: true,
+                cwd: '<%= yeoman.app %>',
+                dest: '<%= yeoman.dist %>/fonts',
+                src: ['bower_components/font-awesome/fonts/*.*']
+			},
+			styles: {
+				expand: true,
+				cwd: '<%= yeoman.app %>',
+				dest: '.tmp/',
+				src: [
+					'styles/{,*/}*.css',
+					'bower_components/bootstrap-select/bootstrap-select.css',
+					'bower_components/gridster/dist/jquery.gridster.css',
+					'bower_components/font-awesome/css/font-awesome.css'
+				]
+			}
         },
         bower: {
             all: {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
         },
+		'bower-install': {
+		  target: {
+			html: '<%= yeoman.app %>/index.html',
+			cssPattern: '<link href="{{filePath}}" rel="stylesheet">',
+			jsPattern: '<script type="text/javascript" src="{{filePath}}"></script>',
+			exclude: []
+		  }
+		},
         eco: {
             app: {
                 files: {
@@ -370,13 +398,13 @@ module.exports = function (grunt) {
         'createDefaultTemplate',
         'eco',
         'compass:dist',
+        'copy',
         'useminPrepare',
-        //'imagemin',
+        'imagemin',
         'htmlmin',
         'concat',
         'cssmin',
         'uglify',
-        'copy',
         'rev',
         'usemin'
     ]);
