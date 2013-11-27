@@ -78,3 +78,19 @@ body {
 .alert{
   margin: 20px 20px 0px 20px;
 }
+
+li#email.selected {
+  background: rgba(246, 247, 249, .1);  
+}
+
+#sendEmail {
+  width: 276px;
+  
+  input, .btn{  
+    font-size: $font-size-small;
+  }
+  
+  input{
+    width: 185px;
+  }
+}
