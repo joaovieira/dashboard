@@ -1,0 +1,9 @@
+<div class="email-popover">
+  <form class="form-inline" id="sendEmail" role="form">
+    <div class="form-group">
+      <label class="sr-only" for="email">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
+  </form>
+</div>
