@@ -100,13 +100,13 @@ li#email.selected {
 }
 
 .occupation-quarter, .occupation-half{
-  color: green;
+  color: $occupation-green;
 }
 
 .occupation-almost-full{
-  color: yellow;
+  color: $occupation-yellow;
 }
 
 .occupation-full{
-  color: red;
+  color: $occupation-red;
 }
