@@ -1,0 +1,12 @@
+<div class="col-sm-12 col-md-5 widget-description">
+  <div class="thumbnail">
+    <img src="" alt="<%= @widget.name %>" class="<%= @widget.get 'name' %>">
+  </div>
+  <div class="caption">
+    <h4>Widget description</h3>
+    <p><%= @widget.get 'description' %></p>
+  </div>
+</div>
+<div class="col-sm-12 col-md-6 col-md-offset-1 widget-form">
+  Widget not supported.
+</div>

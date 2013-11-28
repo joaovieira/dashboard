@@ -1,0 +1,8 @@
+<td class="favorite">
+  <i data-toggle="tooltip" title="" data-original-title="<%= "#{@input.get 'occupation'}%" %>" class="fa fa-tooltip <%= @occupation() %>"></i>
+</td>
+<td class="title"><%= @input.get 'title' %></td>
+<td><%= @input.get 'description' %></td>
+<td class="map">
+  <i data-toggle="tooltip" title="" data-original-title="view on map" class="fa fa-map-marker fa-tooltip clickable"></i>
+</td>
