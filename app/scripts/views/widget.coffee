@@ -24,7 +24,7 @@ class dashboard.Views.WidgetView extends Backbone.View
     @defaultSize = [1,1]
 
 
-  render: (inputTemplate) =>
+  render: =>
     @$el.html @template widget: @model
     this
     

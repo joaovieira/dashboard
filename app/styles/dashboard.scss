@@ -79,6 +79,10 @@ body {
   margin: 20px 20px 0px 20px;
 }
 
+.tooltip{
+  white-space: nowrap;
+}
+
 li#email.selected {
   background: rgba(246, 247, 249, .1);  
 }
@@ -93,4 +97,16 @@ li#email.selected {
   input{
     width: 185px;
   }
+}
+
+.occupation-quarter, .occupation-half{
+  color: green;
+}
+
+.occupation-almost-full{
+  color: yellow;
+}
+
+.occupation-full{
+  color: red;
 }

@@ -2,7 +2,7 @@
     <% for item in @thumbnails: %>
       <div class="col-sm-6 col-md-3">  
         <a href="#new/<%= if @base? then "#{@base}/#{item.get 'name'}" else item.get 'name' %>" class="thumbnail">
-          <img src="" alt="<%= item.get 'title' %>" class="<%= item.get 'name' %>">
+          <img src="" title="<%= item.get 'title' %>" alt="<%= item.get 'title' %>" class="<%= item.get 'name' %>">
         </a>
       </div>
     <% end %>

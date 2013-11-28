@@ -9,5 +9,5 @@ class dashboard.Views.LastInputView extends Backbone.View
   
   render: ->
     @$el.html @template input: @model
-    @$('.fa-star').tooltip placement: 'bottom'
+    @$('.fa-tooltip').tooltip placement: 'bottom'
     this

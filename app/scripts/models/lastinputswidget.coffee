@@ -5,7 +5,6 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
   defaults:
     icon: "fa-clock-o"
     type: 'last-inputs'
-    title: 'Last registered inputs'
     site: ''                          # set unpon addition
     name: ''                          # set unpon addition
     refreshTime: 0                    # set unpon addition

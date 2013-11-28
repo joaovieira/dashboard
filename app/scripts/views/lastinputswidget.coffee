@@ -15,7 +15,6 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
     # bind model events
     @model.on 'change', @refresh
     
-    @render()
     @model.refresh()
     
     
@@ -32,11 +31,18 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
     , this
     
     
-  addFavorite: (e) ->
+  addFavorite: (e) ->  
+    e.stopPropagation()
+    
+    # change style
     @$(e.currentTarget).toggleClass 'selected'
     index = @$( ".favorite i" ).index(e.currentTarget)
     input = @model.inputs.at(index)
     input.set 'favorite', !input.get 'favorite'
-    e.stopPropagation()
-  
+    
+    # add input to favorites widget if available
+    if input.get 'favorite'
+      dashboard.appView.widgets.addFavorite input
+    else
+      dashboard.appView.widgets.removeFavorite input
     

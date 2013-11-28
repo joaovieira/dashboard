@@ -2,7 +2,6 @@
 
 class dashboard.Views.ModalView extends Backbone.View
   
-  widgetTemplate: JST['app/scripts/templates/modal/widget']
   thumbnailTemplate: JST['app/scripts/templates/modal/thumbnails']
   
   events: ->
@@ -51,7 +50,7 @@ class dashboard.Views.ModalView extends Backbone.View
         
     # content
     if @widget
-      partial = @widgetTemplate widget: @widget
+      partial = @widgetCategoryView().render().el
     else if @category
       partial = @thumbnailTemplate thumbnails: @category.widgets.models, base: @category.get 'name'
     else
@@ -62,17 +61,27 @@ class dashboard.Views.ModalView extends Backbone.View
       $(this).fadeTo(400, 1)
   
   
+  widgetCategoryView: ->
+    switch @widget.get 'name'
+      when 'last-inputs' then new dashboard.Views.LastInputsCategoryView model: @widget
+      when 'favorites' then new dashboard.Views.FavoritesCategoryView model: @widget
+      else new dashboard.Views.CategoryView model: @widget
+          
+      
   createWidget: (e) ->
     e.preventDefault()
     
-    data = Backbone.Syphon.serialize(this);
+    data = Backbone.Syphon.serialize(this)
     
-    widget = new dashboard.Models.LastInputsWidget data, {validate: true}
+    widgetModel = switch @widget.get 'name'
+      when 'last-inputs' then new dashboard.Models.LastInputsWidget data, {validate: true}
+      when 'favorites' then new dashboard.Models.FavoritesWidget data, {validate: true}
+      else new dashboard.Models.Widget data, {validate: true}
     
-    if errors = widget.validationError
+    if errors = widgetModel.validationError
       @renderErrors errors
     else
-      dashboard.appView.widgets.createWidget widget
+      dashboard.appView.widgets.createWidget widgetModel
       @$el.modal('hide')
       
    

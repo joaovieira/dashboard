@@ -1,5 +1,5 @@
 <td class="favorite">
-  <i data-toggle="tooltip" title="" data-original-title="add to favorites" class="fa fa-star clickable <%= if @input.get 'favorite' then "selected" else '' %>"></i>
+  <i data-toggle="tooltip" title="" data-original-title="add to favorites" class="fa fa-star fa-tooltip clickable <%= if @input.get 'favorite' then "selected" else '' %>"></i>
 </td>
 <td class="title"><%= @input.get 'title' %></td>
 <td><%= @input.get 'description' %></td>

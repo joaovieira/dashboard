@@ -5,3 +5,7 @@ class dashboard.Models.LastInput extends Backbone.Model
   
   defaults:
     favorite: false
+    occupation: 0
+    coordinates:
+      latitude: 0
+      longitude: 0

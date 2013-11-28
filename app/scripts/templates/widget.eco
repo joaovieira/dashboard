@@ -7,7 +7,7 @@
       </div>
       <div class="widget-title">
         <i class="title-icon fa <%= @widget.get 'icon' %> fa-lg"/>
-        <span class="title-text"><%= @widget.get 'title' %></span> 
+        <span class="title-text"><%= @widget.get 'name' %></span> 
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
       <div id="inputs">
         <div class="loading">
           <i class="fa fa-refresh fa-spin fa-3x refresh"></i>
-            </div>
+        </div>
       </div>
     </div>
   </div>

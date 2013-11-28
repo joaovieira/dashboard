@@ -67,12 +67,27 @@ class dashboard.Views.WidgetsView extends Backbone.View
   	@collection.add new dashboard.Models.AddWidget()
   	
   
+  getWidget: (type) ->
+    @collection.findWhere type: type  	
+  
+  
   getView: (model) ->
     switch model.get 'type'
       when 'last-inputs' then new dashboard.Views.LastInputsWidgetView model: model
+      when 'favorites' then new dashboard.Views.FavoritesWidgetView model: model
       when 'add' then new dashboard.Views.AddWidgetView model: model
       else new dashboard.Views.WidgetView model: model
         
         
   showLast: (e) =>
     @$el.fadeIn() if @gridster.$widgets.length is @collection.length
+    
+    
+  addFavorite: (input) ->
+    if favoriteWidget = @getWidget 'favorites'
+      favoriteWidget.inputs.add input
+    
+  
+  removeFavorite: (input) ->
+    if favoriteWidget = @getWidget 'favorites'
+      favoriteWidget.inputs.remove input

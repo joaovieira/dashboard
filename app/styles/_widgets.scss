@@ -112,7 +112,7 @@ handle, .clickable{
 
 .widget-title{
   i{
-    color: $link-hover-color;
+    color: $title-color;
   }
 }
 
@@ -120,8 +120,15 @@ handle, .clickable{
   margin-right: 8px;
 }
 
-.widget-content .loading{
-  text-align: center;
+.widget-content {
+  .loading{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-weight: bold;
+  }
 }
 
 /* icons */

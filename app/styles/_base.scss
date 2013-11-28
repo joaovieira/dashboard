@@ -48,11 +48,17 @@ $thumbnail-border-radius:       2px;
 /* forms */
 /*$input-color: #adb2b6;
 $input-bg: transparent; */
-$input-border: #c6d1d7;
+$input-border:                  #c6d1d7;
 
 
 /* popover */
-$popover-color: #2b343c;
+$popover-color:                 #2b343c;
+
+
+/* occpation */
+$occupation-green:              #599541;
+$occupation-yellow:             #e2c816;
+$occupation-red:                #d0311c;
 
 @import "compass";
 @import "sass-bootstrap/lib/bootstrap";
