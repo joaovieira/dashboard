@@ -7,16 +7,17 @@ class dashboard.Views.NavigationView extends Backbone.View
   events:
     'click li#tv': 'enterFullScreen'
     'click li#email': 'toggleEmail'
+    'submit #sendEmail': 'sendEmail'
     "change .form-group.has-error .form-control": "removeError"
     
   
   initialize: ->
     @$('li#email a').popover 
       html: true 
-      content: @emailFormTemplate 
+      content: @emailFormTemplate
     
-	$('#sendEmail').submit @sendEmail 
-    @
+    #$('#sendEmail').submit @sendEmail
+    #@
     
 	
   enterFullScreen: ->
@@ -59,9 +60,9 @@ class dashboard.Views.NavigationView extends Backbone.View
             image: img.split(',')[1]
             email: data.email
           , @alertMailSuccess data.email
-	    
-	  # put back faces on again
-	  $('.face-hidden').show()
+      
+      # put back faces on again
+      $('.face-hidden').show()
         
   
   removeError: (e) ->
