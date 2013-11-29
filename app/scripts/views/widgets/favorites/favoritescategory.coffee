@@ -2,7 +2,7 @@
 
 class dashboard.Views.FavoritesCategoryView extends dashboard.Views.CategoryView
 
-  formTemplate: JST['app/scripts/templates/modal/favorites']
+  formTemplate: JST['app/scripts/templates/widgets/favorites/category']
   
   render: ->
     super()

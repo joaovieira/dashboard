@@ -22,5 +22,22 @@
   </div>
 </div>
 <div class="back">
-  Settings:
+  <div class="widget-header">
+    <div class="wrapper">
+      <div class="widget-controls">
+        <td class="settings-save">
+          <i data-toggle="tooltip" title="" data-original-title="save settings" class="fa fa-check fa-tooltip clickable"></i>
+        </td>
+        <td class="widget-remove">
+          <i data-toggle="tooltip" title="" data-original-title="remove widget" class="fa fa-trash-o fa-tooltip clickable"></i>
+        </td>
+        <i class="fa fa-times settings-close clickable"></i>
+      </div>
+      <div class="widget-title">
+        <span class="title-text">Settings</span> 
+      </div>
+    </div>
+  </div>
+  <div class="widget-content clearfix">
+  </div>
 </div>

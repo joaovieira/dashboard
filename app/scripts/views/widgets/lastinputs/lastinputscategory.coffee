@@ -2,7 +2,7 @@
 
 class dashboard.Views.LastInputsCategoryView extends dashboard.Views.CategoryView
 
-  formTemplate: JST['app/scripts/templates/modal/lastinputs']
+  formTemplate: JST['app/scripts/templates/widgets/lastinputs/category']
   
   render: ->
     super()

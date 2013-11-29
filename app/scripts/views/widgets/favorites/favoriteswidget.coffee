@@ -2,7 +2,7 @@
 
 class dashboard.Views.FavoritesWidgetView extends dashboard.Views.WidgetView
 
-  inputTemplate: JST['app/scripts/templates/favoriteinput']
+  settingsTemplate: JST['app/scripts/templates/widgets/favorites/settings']
   
   events: _.extend
       'click .fa-map-marker': 'viewOnMap'

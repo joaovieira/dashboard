@@ -85,6 +85,45 @@ a, a:hover, a:visited {
   }
 }
 
+.back{
+  .widget-header{
+    border-bottom: none;
+    
+    .title-text {
+      color: $link-color;
+    }
+  }
+  
+  .widget-content{
+    padding: 15px;
+    
+    .widget-settings{
+      .form-header, .form-control, .btn{
+        font-size: 9pt;
+      }
+      
+      .form-header{
+        font-weight: normal;
+        color: $modal-text-color;
+      }
+      
+      .form-control, .btn{
+        height: 28px;
+      }
+      
+      .dropdown-menu{
+        font-size: 9pt;
+        padding: 2px 0;
+      }
+    }
+  }
+}
+
+
+.btn-default i{
+  color: #333333;
+}
+
 handle, i{
   color: $icon-color;
 }
@@ -137,6 +176,7 @@ handle, .clickable{
   &:hover{ color: $link-color;}
   &.selected{ color: $link-hover-color; }
 }
+
 
 /* flip */
 

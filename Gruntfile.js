@@ -169,7 +169,7 @@ module.exports = function (grunt) {
                     // require them into your main .coffee file
                     expand: true,
                     cwd: '<%= yeoman.app %>/scripts',
-                    src: '{,*/}*.coffee',
+                    src: '**/*.coffee',
                     dest: '.tmp/scripts',
                     ext: '.js'
                 }]
@@ -286,11 +286,11 @@ module.exports = function (grunt) {
             },
 			fonts:{
 				expand: true,
-                dot: true,
+				dot: true,
 				flatten: true,
-                cwd: '<%= yeoman.app %>',
-                dest: '<%= yeoman.dist %>/fonts',
-                src: ['bower_components/font-awesome/fonts/*.*']
+				cwd: '<%= yeoman.app %>',
+				dest: '<%= yeoman.dist %>/fonts',
+				src: ['bower_components/font-awesome/fonts/*.*']
 			},
 			styles: {
 				expand: true,
@@ -320,7 +320,7 @@ module.exports = function (grunt) {
         eco: {
             app: {
                 files: {
-                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/{,*/}*.eco']
+                    '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/**/*.eco']
                 }
             }
         },

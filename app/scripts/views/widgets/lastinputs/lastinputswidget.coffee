@@ -2,7 +2,7 @@
 
 class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
   
-  inputTemplate: JST['app/scripts/templates/lastinput']
+  settingsTemplate: JST['app/scripts/templates/widgets/lastinputs/settings']
   
   events: _.extend
       'click .fa-star': 'addFavorite'

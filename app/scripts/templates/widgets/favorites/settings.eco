@@ -1,0 +1,9 @@
+<form class="form-horizontal widget-settings" id="editSettings" role="form">    
+  <div class="form-group">
+    <label for="name" class="col-sm-4 form-header">Name</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="name" name="name" placeholder="Name in dashboard">
+      <label class='control-label' for='name'></label>
+    </div>
+  </div>
+</form>

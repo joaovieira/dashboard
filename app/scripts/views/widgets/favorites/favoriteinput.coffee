@@ -4,7 +4,7 @@ class dashboard.Views.FavoriteInputView extends Backbone.View
 
   tagName: 'tr'
   className: 'input'
-  template: JST['app/scripts/templates/favoriteinput']
+  template: JST['app/scripts/templates/widgets/favorites/rowinput']
 
 
   render: ->

@@ -5,7 +5,7 @@ class dashboard.Views.AddWidgetView extends Backbone.View
   tagName: 'li'
   className: 'widget add'
 
-  template: JST['app/scripts/templates/addwidget']
+  template: JST['app/scripts/templates/widgets/add/widget']
   
   
   genericEvents:

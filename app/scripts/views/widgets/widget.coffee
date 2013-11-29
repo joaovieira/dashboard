@@ -5,13 +5,14 @@ class dashboard.Views.WidgetView extends Backbone.View
   tagName: 'li'
   className: 'widget'
   
-  template: JST['app/scripts/templates/widget']
+  template: JST['app/scripts/templates/widgets/base']
 
   events:
     'click tr.input': 'highlight'
     'click .delete': 'remove'
     'click .settings': 'editSettings'
-    'click .back': 'saveSettings'
+    'click .save': 'saveSettings'
+    'click .settings-close': 'viewWidget'
     
   
   initialize: ->
@@ -26,6 +27,10 @@ class dashboard.Views.WidgetView extends Backbone.View
 
   render: =>
     @$el.html @template widget: @model
+    if @settingsTemplate?
+      @$('.back .widget-content').html @settingsTemplate()
+      @$('select').selectpicker()
+      @$('.fa-tooltip').tooltip placement: 'bottom'
     this
     
   highlight: (e) ->
@@ -34,7 +39,7 @@ class dashboard.Views.WidgetView extends Backbone.View
   editSettings: (e) ->
     @$(e.currentTarget).closest('.widget').toggleClass 'flip'
   
-  saveSettings: (e) ->
+  viewWidget: (e) ->
     @$(e.currentTarget).closest('.widget').removeClass 'flip'
 
   unrender: =>
