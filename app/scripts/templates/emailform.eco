@@ -1,9 +1,12 @@
 <div class="email-popover">
-  <form class="form-inline" id="sendEmail" role="form">
-    <div class="form-group">
-      <label class="sr-only" for="email">Email address</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-    </div>
-    <button type="submit" class="btn btn-primary">Send</button>
+  <p>Take snapshot of dashboard and e-mail</p>
+  <form class="form-inline form-group" id="sendEmail" role="form">
+      <div class="input-group">  
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter e-mail">
+        <span class="input-group-btn">
+          <button class="btn btn-primary btn-search fa fa-camera" type="submit"></button>
+        </span>
+      </div>
+      <label class="control-label" for="email"></label>
   </form>
 </div>

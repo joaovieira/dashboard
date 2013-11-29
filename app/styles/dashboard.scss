@@ -57,10 +57,6 @@ body {
   }
 }
 
-.popover {
-  border-radius: $border-radius-base;
-}
-
 
 :-webkit-full-screen #navigation { display: none }
 :-moz-full-screen #navigation { display: none }
@@ -92,7 +88,7 @@ li#email.selected {
 }
 
 #sendEmail {
-  width: 276px;
+  margin-bottom: 0px;
   
   input, .btn{  
     font-size: $font-size-small;
@@ -101,6 +97,18 @@ li#email.selected {
   input{
     width: 185px;
   }
+  
+  button{
+    line-height: 1.7;
+  }
+}
+
+.popover {
+  border-radius: $border-radius-base;
+}
+
+.control-label{
+  display: none;
 }
 
 .occupation-quarter, .occupation-half{
