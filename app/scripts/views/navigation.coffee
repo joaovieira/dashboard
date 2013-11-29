@@ -47,7 +47,6 @@ class dashboard.Views.NavigationView extends Backbone.View
     else
       # hide popover and widgets back faces
       @$('li#email a').popover 'hide'
-      @$('.face-hidden').hide()
       
       # take screenshot
       html2canvas document.body, #$('#widgets'),
@@ -60,9 +59,6 @@ class dashboard.Views.NavigationView extends Backbone.View
             image: img.split(',')[1]
             email: data.email
           , @alertMailSuccess data.email
-      
-      # put back faces on again
-      $('.face-hidden').show()
         
   
   removeError: (e) ->

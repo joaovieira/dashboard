@@ -38,13 +38,11 @@ class dashboard.Views.WidgetView extends Backbone.View
     
     
   editSettings: (e) ->
-    @$(e.currentTarget).closest('.widget').toggleClass('flip')
-      .children('div').toggleClass('face-hidden')
+    @$(e.currentTarget).closest('.widget').toggleClass 'flip'
   
   
   viewWidget: (e) ->
-    @$(e.currentTarget).closest('.widget').removeClass('flip')	
-      .children('div').toggleClass('face-hidden')
+    @$(e.currentTarget).closest('.widget').removeClass 'flip'
 
 
   unrender: =>
