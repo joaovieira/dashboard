@@ -13,7 +13,7 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
     @$el.attr 'id', @model.cid
       
     # bind model events
-    @model.on 'change', @refresh
+    @model.on 'update', @refresh
     
     @model.refresh()
     

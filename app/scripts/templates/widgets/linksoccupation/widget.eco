@@ -1,0 +1,47 @@
+<div class="tabbable tabs-below link-tabs">
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="occupation">
+      <div id="value" class="circle"></div>
+      <canvas id="chart" width="120" height="120"></canvas>
+    </div>
+    <div class="tab-pane" id="list">
+      <table class="table table-striped table-hover">
+      </table>
+    </div>
+    <div class="tab-pane" id="sites">
+        <div class="loading">
+          SITES MAP
+        </div>
+    </div>
+  </div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#" data-target="#occupation" data-toggle="tab">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-adjust fa-stack-1x fa-lg fa-flip-horizontal"></i>
+          <i class="fa fa-adjust fa-stack-1x fa-lg fa-rotate-90"></i>
+        </span><br/>
+        OCCUPATION
+      </a>
+    </li>
+    <li>
+      <a href="#" data-target="#list" data-toggle="tab">
+        <span class="fa-stack fa-lg simple">
+          <i class="fa fa-bars fa-stack-1x fa-lg"></i>
+        </span><br/>
+        LIST
+      </a>
+    </li>
+    <li>
+      <a href="#" data-target="#sites" data-toggle="tab">
+        <span class="fa-stack fa-lg simple">
+          <i class="fa fa-map-marker fa-stack-1x fa-lg"></i>
+        </span><br/>
+        SITES
+      </a>
+    </li>
+  </ul>
+</div>

@@ -65,6 +65,7 @@ class dashboard.Views.ModalView extends Backbone.View
     switch @widget.get 'name'
       when 'last-inputs' then new dashboard.Views.LastInputsCategoryView model: @widget
       when 'favorites' then new dashboard.Views.FavoritesCategoryView model: @widget
+      when 'links-occupation' then new dashboard.Views.LinksOccupationCategoryView model: @widget
       else new dashboard.Views.CategoryView model: @widget
           
       
@@ -78,6 +79,7 @@ class dashboard.Views.ModalView extends Backbone.View
     widgetModel = switch @widget.get 'name'
       when 'last-inputs' then new dashboard.Models.LastInputsWidget data, options, {validate: true}
       when 'favorites' then new dashboard.Models.FavoritesWidget data, options, {validate: true}
+      when 'links-occupation' then new dashboard.Models.LinksOccupationWidget data, options, {validate: true}
       else new dashboard.Models.Widget data, options, {validate: true}
     
     if errors = widgetModel.validationError

@@ -84,6 +84,7 @@ class dashboard.Views.WidgetsView extends Backbone.View
     switch model.get 'type'
       when 'last-inputs' then new dashboard.Views.LastInputsWidgetView model: model
       when 'favorites' then new dashboard.Views.FavoritesWidgetView model: model
+      when 'links-occupation' then new dashboard.Views.LinksOccupationWidgetView model: model
       when 'add' then new dashboard.Views.AddWidgetView model: model
       else new dashboard.Views.WidgetView model: model
         

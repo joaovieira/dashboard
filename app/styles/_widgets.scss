@@ -178,6 +178,46 @@ handle, .clickable{
   }
 }
 
+/* circle chart */
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 45px;
+  font-size: 17pt;
+  color: white;
+  line-height: 90px;
+  text-align: center;
+  background: #1b517b
+}
+
+#occupation{
+  #value, #chart{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+  
+  #value{
+    margin-top: -45px;
+    margin-left: -45px;
+    z-index: 1020;
+    
+    span{   
+      font-size: 9pt;
+      position: absolute;
+      top: -3px;
+      right: 18px;
+    }
+  }
+  
+  #chart{
+    margin-top: -60px;
+    margin-left: -60px;
+    z-index: 1010;
+  }
+}
+
+
 /* icons */
 
 .fa-star.clickable{

@@ -1,11 +1,11 @@
 'use strict';
 
-class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget 
-  
+class dashboard.Models.LinksOccupationWidget extends dashboard.Models.Widget
+
   defaults:
-    icon: "fa-clock-o"
-    type: 'last-inputs'
-    size: [2,1]
+    icon: "fa-bar-chart-o"
+    type: 'links-occupation'
+    size: [1,1]
     site: ''                          # set unpon addition
     name: ''                          # set unpon addition
     refreshTime: 0                    # set unpon addition
@@ -27,7 +27,7 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
     invalid.push 'refreshTime': 'Please select an interval' if not attrs.refreshTime
     
     invalid if invalid.length
-  
+    
     
   refresh: =>
     $.getJSON @get('site'), (inputs) =>
@@ -37,12 +37,19 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
           input.set data
         else
           @inputs.add new dashboard.Models.LastInput data
-      
+
       @save  
       @trigger 'update'
-      setTimeout @refresh, @get 'refreshTime'
-
-
+      setTimeout @refresh, @get 'refreshTime'  
+  
+  
+  getAverageOccupation: ->
+    totalOccupation = @inputs.reduce (memo, value) ->
+      memo + value.get 'occupation'
+    , 0
+    totalOccupation / @inputs.length
+    
+    
   parse: (data, options) ->
     @inputs.reset data.inputs
     data
