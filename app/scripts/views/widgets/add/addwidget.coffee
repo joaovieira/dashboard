@@ -13,6 +13,9 @@ class dashboard.Views.AddWidgetView extends Backbone.View
     
 
   initialize: ->
+    @$el.attr 'id', @model.cid
+
+      
     @events = _.extend({}, @genericEvents, @events)
     @delegateEvents()
     

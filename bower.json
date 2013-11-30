@@ -13,7 +13,8 @@
     "bootstrap-select": "~1.3.5",
     "backbone.syphon": "~0.4.1",
     "html2canvas": "~0.4.1",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "backbone.localStorage": "~1.1.7"
   },
   "devDependencies": {}
 }

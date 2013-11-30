@@ -5,12 +5,23 @@ class dashboard.Models.FavoritesWidget extends dashboard.Models.Widget
   defaults:
     icon: "fa-star"
     type: 'favorites'
+    size: [2,1]
     name: ''                          # set unpon addition
   
   
-  constructor: ->
-    @inputs = new dashboard.Collections.LastInputs()
+  constructor: (attrs, options) ->
+    @collection = options.collection
+    @inputs = new dashboard.Collections.LastInputs(attrs.inputs)
     @inputs.on 'all', @refresh
+     
+    # init with already favorited inputs
+    if lastInputsWidget = @collection.findWhere(type: 'last-inputs')
+      favorites = lastInputsWidget.inputs.where favorite: true
+      for input in favorites
+        @inputs.add input
+            
+      @refresh if favorites.length
+  
     Backbone.Model.apply this, arguments
   
   

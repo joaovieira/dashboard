@@ -5,14 +5,18 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
   defaults:
     icon: "fa-clock-o"
     type: 'last-inputs'
+    size: [2,1]
     site: ''                          # set unpon addition
     name: ''                          # set unpon addition
     refreshTime: 0                    # set unpon addition
   
   
-  constructor: ->
-    @inputs = new dashboard.Collections.LastInputs()
+  constructor: (attrs, options) ->
+    @collection = options.collection
+    @inputs = new dashboard.Collections.LastInputs attrs.inputs
+    
     #@inputs.on 'change', @save
+    
     Backbone.Model.apply this, arguments
          
   
@@ -33,7 +37,8 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
           input.set data
         else
           @inputs.add new dashboard.Models.LastInput data
-        
+      
+      @save  
       @trigger 'change'
       setTimeout @refresh, @get 'refreshTime'
 

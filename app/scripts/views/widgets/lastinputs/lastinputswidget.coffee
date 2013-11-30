@@ -10,8 +10,8 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
   
     
   initialize: ->
-    @defaultSize = [2,1]
-    
+    @$el.attr 'id', @model.cid
+      
     # bind model events
     @model.on 'change', @refresh
     
@@ -39,6 +39,9 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
     index = @$( ".favorite i" ).index(e.currentTarget)
     input = @model.inputs.at(index)
     input.set 'favorite', !input.get 'favorite'
+    
+    # save widget
+    @model.save()
     
     # add input to favorites widget if available
     if input.get 'favorite'

@@ -9,9 +9,9 @@ class dashboard.Views.WidgetView extends Backbone.View
 
   events:
     'click tr.input': 'highlight'
-    'click .delete': 'remove'
+    'click .widget-remove': 'remove'
     'click .settings': 'editSettings'
-    'click .save': 'saveSettings'
+    'click .settings-save': 'saveSettings'
     'click .settings-close': 'viewWidget'
     
   

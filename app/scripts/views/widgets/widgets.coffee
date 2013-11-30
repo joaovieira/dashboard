@@ -13,9 +13,13 @@ class dashboard.Views.WidgetsView extends Backbone.View
       min_rows: 2
       draggable:
         handle: 'handle'
+        stop: @savePosition
       resize:
-        enabled: true,
+        enabled: true
+        handle_append_to: '.back'
         max_size: [2, 2]
+        stop: @saveSize
+        
    
     @gridster = @$('ul').gridster(options).data('gridster')
 
@@ -24,8 +28,8 @@ class dashboard.Views.WidgetsView extends Backbone.View
     @collection.on 'remove', @removeWidget
 
     # init widgets
+    @collection.fetch()
     @addAddWidget()
-    #@collection.fetch()
     
   
   addWidget: (widget) =>
@@ -39,28 +43,33 @@ class dashboard.Views.WidgetsView extends Backbone.View
   	  @overrideAddWidget addWidget, newWidget
   	  @addAddWidget()
     else
-  	  @gridster.add_widget newWidget.render().el, newWidget.defaultSize[0], newWidget.defaultSize[1],
-  	   null, null, newWidget.maxSize ?= []
+      size = newWidget.model.get 'size'
+      position = newWidget.model.get 'position'
+      
+      @gridster.add_widget newWidget.render().el, size[0], size[1], 
+        position?.col ? null, position?.row ? null, newWidget.maxSize ?= []
 
     @showLast()
 
   
   removeWidget: (widget) =>
-    toRemove = @gridster.$widgets.filter(".#{widget.get 'type'}")
+    toRemove = @gridster.$widgets.filter("##{widget.cid}")
     @gridster.remove_widget toRemove, @showLast
+    @
 
 
   createWidget: (modalData) ->
-    @collection.add modalData
+    @collection.create modalData
     
     
   overrideAddWidget: (oldW, newW) ->
   	col = oldW.data 'col'
   	row = oldW.data 'row'
+  	size = newW.model.get 'size'
   	
   	addModel = @collection.findWhere type: 'add'
   	@collection.remove addModel
-  	@gridster.add_widget newW.render().el, newW.defaultSize[0], newW.defaultSize[1], col, row, newW.maxSize ?= []
+  	@gridster.add_widget newW.render().el, size[0], size[1], col, row, newW.maxSize ?= []
     
 
   addAddWidget: ->
@@ -85,9 +94,28 @@ class dashboard.Views.WidgetsView extends Backbone.View
     
   addFavorite: (input) ->
     if favoriteWidget = @getWidget 'favorites'
-      favoriteWidget.inputs.add input
+      favoriteWidget.inputs.create input
     
   
   removeFavorite: (input) ->
     if favoriteWidget = @getWidget 'favorites'
       favoriteWidget.inputs.remove input
+      
+      
+  saveSize: (e, ui, widget) =>
+    size = [widget.data('sizex'), widget.data('sizey')]
+    id = widget.attr 'id'
+    widget = @collection.get id
+    widget.set 'size', size
+    widget.save()
+    
+    
+  savePosition: (e, ui) =>
+    widget = ui.$player
+    position = 
+      col: widget.data 'col'
+      row: widget.data 'row'
+    id = widget.attr 'id'
+    widget = @collection.get id
+    widget.set 'position', position
+    widget.save()

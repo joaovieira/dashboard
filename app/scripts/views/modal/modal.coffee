@@ -72,11 +72,13 @@ class dashboard.Views.ModalView extends Backbone.View
     e.preventDefault()
     
     data = Backbone.Syphon.serialize(this)
+    options =
+      collection: dashboard.appView.widgets.collection
     
     widgetModel = switch @widget.get 'name'
-      when 'last-inputs' then new dashboard.Models.LastInputsWidget data, {validate: true}
-      when 'favorites' then new dashboard.Models.FavoritesWidget data, {validate: true}
-      else new dashboard.Models.Widget data, {validate: true}
+      when 'last-inputs' then new dashboard.Models.LastInputsWidget data, options, {validate: true}
+      when 'favorites' then new dashboard.Models.FavoritesWidget data, options, {validate: true}
+      else new dashboard.Models.Widget data, options, {validate: true}
     
     if errors = widgetModel.validationError
       @renderErrors errors

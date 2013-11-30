@@ -10,18 +10,10 @@ class dashboard.Views.FavoritesWidgetView extends dashboard.Views.WidgetView
 
 
   initialize: ->
-    @defaultSize = [2,1]
-
+    @$el.attr 'id', @model.cid
+    
     # bind model events
     @model.on 'update', @refresh
-    
-    # init with already favorited inputs
-    if lastInputsWidget = dashboard.appView.widgets.getWidget 'last-inputs'
-      favorites = lastInputsWidget.inputs.where favorite: true
-      for input in favorites
-        @model.inputs.add input
-      
-      setTimeout @refresh, 100 if favorites.length
 
 
   render: ->

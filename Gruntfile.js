@@ -21,7 +21,6 @@ module.exports = function (grunt) {
     require('load-grunt-tasks')(grunt);
     
     grunt.loadNpmTasks('grunt-connect-proxy');
-	grunt.loadNpmTasks('grunt-bower-install');
 
     // configurable paths
     var yeomanConfig = {
@@ -37,7 +36,7 @@ module.exports = function (grunt) {
                 livereload: true
             },
             coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+                files: ['<%= yeoman.app %>/scripts/**/*.coffee'],
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
@@ -309,14 +308,6 @@ module.exports = function (grunt) {
                 rjsConfig: '<%= yeoman.app %>/scripts/main.js'
             }
         },
-		'bower-install': {
-		  target: {
-			html: '<%= yeoman.app %>/index.html',
-			cssPattern: '<link href="{{filePath}}" rel="stylesheet">',
-			jsPattern: '<script type="text/javascript" src="{{filePath}}"></script>',
-			exclude: []
-		  }
-		},
         eco: {
             app: {
                 files: {
