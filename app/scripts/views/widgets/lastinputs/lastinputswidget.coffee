@@ -40,12 +40,11 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
     input = @model.inputs.at(index)
     input.set 'favorite', !input.get 'favorite'
     
-    # save widget
-    @model.save()
-    
     # add input to favorites widget if available
     if input.get 'favorite'
       dashboard.appView.widgets.addFavorite input
     else
       dashboard.appView.widgets.removeFavorite input
     
+    # save widget
+    @model.save()

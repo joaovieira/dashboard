@@ -95,7 +95,7 @@ class dashboard.Views.WidgetsView extends Backbone.View
     
   addFavorite: (input) ->
     if favoriteWidget = @getWidget 'favorites'
-      favoriteWidget.inputs.create input
+      favoriteWidget.inputs.add input
     
   
   removeFavorite: (input) ->

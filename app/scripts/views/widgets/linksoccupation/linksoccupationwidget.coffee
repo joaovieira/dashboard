@@ -41,7 +41,7 @@ class dashboard.Views.LinksOccupationWidgetView extends dashboard.Views.WidgetVi
   drawChart: =>
     context = $("#occupation #chart").get(0).getContext "2d"
     
-    occupation = Math.round @model.getAverageOccupation()
+    occupation = @model.getAverageOccupation()
     data = [
     	{ value: occupation, color: "#4a9fe1" }
     	{ value: 100-occupation, color: "#fff" }

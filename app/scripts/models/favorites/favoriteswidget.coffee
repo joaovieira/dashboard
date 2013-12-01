@@ -32,13 +32,13 @@ class dashboard.Models.FavoritesWidget extends dashboard.Models.Widget
     invalid if invalid.length
 
 
-  refresh: =>
-    #@save
+  refresh: =>  
+    @save()
     @trigger 'update'
-    
+      
           
   parse: (data, options) ->
-    @inputs.reset data.inputs
+    @inputs.reset data.inputs, silent: true
     data
 
 

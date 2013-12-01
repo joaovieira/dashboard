@@ -38,7 +38,7 @@ class dashboard.Models.LinksOccupationWidget extends dashboard.Models.Widget
         else
           @inputs.add new dashboard.Models.LastInput data
 
-      @save  
+      @save()  
       @trigger 'update'
       setTimeout @refresh, @get 'refreshTime'  
   
@@ -47,7 +47,7 @@ class dashboard.Models.LinksOccupationWidget extends dashboard.Models.Widget
     totalOccupation = @inputs.reduce (memo, value) ->
       memo + value.get 'occupation'
     , 0
-    totalOccupation / @inputs.length
+    Math.round totalOccupation / @inputs.length
     
     
   parse: (data, options) ->

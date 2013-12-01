@@ -18,7 +18,7 @@ class dashboard.Views.FavoritesWidgetView extends dashboard.Views.WidgetView
 
   render: ->
     super()
-    @renderEmpty()
+    @refresh()
     this
 
 

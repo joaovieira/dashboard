@@ -38,7 +38,7 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
         else
           @inputs.add new dashboard.Models.LastInput data
       
-      @save  
+      @save() 
       @trigger 'update'
       setTimeout @refresh, @get 'refreshTime'
 
