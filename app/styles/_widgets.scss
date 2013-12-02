@@ -5,10 +5,10 @@ a, a:hover, a:visited {
 }
 
 .widget{
-  font-size: 9pt;
+  font-size: $font-size-small;
   
   .widget-header{
-    font-size: 11pt;
+    font-size: $font-size-normal;
     font-weight: bold;
     height: 30px;  
     color: $title-color;
@@ -103,7 +103,7 @@ a, a:hover, a:visited {
     
     .widget-settings{
       .form-header, .form-control, .btn{
-        font-size: 9pt;
+        font-size: $font-size-small;
       }
       
       .form-header{
@@ -120,7 +120,7 @@ a, a:hover, a:visited {
       }
       
       .dropdown-menu{
-        font-size: 9pt;
+        font-size: $font-size-small;
         padding: 2px 0;
       }
     }
@@ -183,7 +183,7 @@ handle, .clickable{
   width: 90px;
   height: 90px;
   border-radius: 45px;
-  font-size: 17pt;
+  font-size: 22px;
   color: white;
   line-height: 90px;
   text-align: center;
@@ -203,7 +203,7 @@ handle, .clickable{
     z-index: 1020;
     
     span{   
-      font-size: 9pt;
+      font-size: $font-size-small;
       position: absolute;
       top: -3px;
       right: 18px;

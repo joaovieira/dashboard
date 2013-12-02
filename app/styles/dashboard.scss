@@ -23,7 +23,7 @@ body {
     
     .navbar-nav li {
       width: 150px;
-      font-size: 9pt;
+      font-size: $font-size-small;
 
       &:hover{
         background: rgba(246, 247, 249, .1);  
@@ -106,7 +106,7 @@ li#email.selected {
 
 .email-popover{
 	width: 220px;
-	font-size: 9pt;
+	font-size: $font-size-small;
 }
 
 .control-label{

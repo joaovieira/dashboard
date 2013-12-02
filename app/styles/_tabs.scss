@@ -1,5 +1,7 @@
 .tabs-below {
   > .nav-tabs {
+    background-color: #246699; /* fallback color */
+    background-image: image-url("tab_fb.png"); /* fallback image */
     @include background-image(linear-gradient(#387fb5, #246699));
 
     position: absolute;
@@ -7,6 +9,7 @@
     border: 0;
     width: 100%;
     height: 35px;
+    z-index: 1050;
   }
   
   li{
@@ -15,6 +18,8 @@
     width: calc(100%/3);
     
     &.active{   
+      background-color: #0b3657; /* fallback color */
+      background-image: image-url("tab_selected_fb.png"); /* fallback image */
       @include background-image(linear-gradient(#255981, #0b3657));
       
       a{
@@ -37,7 +42,7 @@
     
     a{
       color: white;
-      font-size: 6pt;
+      font-size: 8px;
       padding: 0px;
       text-align: center;
       border: 0;
@@ -49,7 +54,7 @@
       }
       
       i{
-        font-size: 9pt;
+        font-size: $font-size-small;
         color: white;
         display: block;
       }

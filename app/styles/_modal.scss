@@ -27,7 +27,7 @@
 }
 
 .modal-title{
-  font-size: 11pt;
+  font-size: $font-size-normal;
   color: $link-hover-color;
 }
 
@@ -40,7 +40,7 @@
     float: right;
     
     .form-control, button {
-      font-size: 9pt;
+      font-size: $font-size-small;
     }
     button{
       line-height: 1.7;
@@ -76,13 +76,13 @@
 .widget-description{
   .caption {
     h4{
-      font-size: 11pt;
+      font-size: $font-size-normal;
       font-weight: normal;
       color: $breadcrumb-color;
     }
     
     p{
-      font-size: 10pt;
+      font-size: 13px;
       color: $modal-text-color;
     }
   }
@@ -93,7 +93,7 @@
     color: #6a6a6a;
     text-align: left;
     font-weight: normal;
-    font-size: 11pt;
+    font-size: $font-size-normal;
   }
   
   .form-group{
@@ -103,7 +103,7 @@
   .help-block{
     margin-bottom: -15px;
     color: $modal-text-color;
-    font-size: 9pt;
+    font-size: $font-size-small;
   }
   
   .form-control{
@@ -113,7 +113,7 @@
 
 .form-group.has-error{ 
   .control-label{
-    font-size: 9pt;
+    font-size: $font-size-small;
     padding-top: 0px;
   }
   

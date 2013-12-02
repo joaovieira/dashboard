@@ -9,7 +9,7 @@ class dashboard.Views.AddWidgetView extends Backbone.View
   
   
   genericEvents:
-    'click .widget-content': 'newWidget'
+    'click .wrapper': 'newWidget'
     
 
   initialize: ->
