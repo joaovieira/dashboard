@@ -11,7 +11,8 @@ class dashboard.Models.FavoritesWidget extends dashboard.Models.Widget
   
   constructor: (attrs, options) ->
     @collection = options.collection
-    @inputs = new dashboard.Collections.LastInputs(attrs.inputs)
+    @inputs = new dashboard.Collections.LastInputs attrs.inputs
+    
     @inputs.on 'all', @refresh
      
     # init with already favorited inputs
@@ -21,9 +22,8 @@ class dashboard.Models.FavoritesWidget extends dashboard.Models.Widget
         @inputs.add input
             
       @refresh if favorites.length
-  
+
     Backbone.Model.apply this, arguments
-  
   
   validate: (attrs) ->
     invalid = []

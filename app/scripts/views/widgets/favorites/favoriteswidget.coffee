@@ -9,19 +9,6 @@ class dashboard.Views.FavoritesWidgetView extends dashboard.Views.WidgetView
     , dashboard.Views.WidgetView.prototype.events
 
 
-  initialize: ->
-    @$el.attr 'id', @model.cid
-    
-    # bind model events
-    @model.on 'update', @refresh
-
-
-  render: ->
-    super()
-    @refresh()
-    this
-
-
   refresh: =>
     if @model.inputs.length
       @$('#inputs').html '<table class="table table-striped table-hover"></table>'

@@ -1,0 +1,8 @@
+<table class="table table-striped table-hover" id="stats">
+  <tr>
+    <th></th>
+    <% for label in @labels: %>
+      <th><%= label.toUpperCase() %></th>
+    <% end %>
+  </tr>
+</table>

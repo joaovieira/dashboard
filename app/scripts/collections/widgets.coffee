@@ -14,4 +14,5 @@ class dashboard.Collections.Widgets extends Backbone.Collection
       when 'links-occupation' then new dashboard.Models.LinksOccupationWidget attrs, options
       when 'low-priority' then new dashboard.Models.LowPriorityWidget attrs, options
       when 'add' then new dashboard.Models.AddWidget attrs, options
+      when 'stats' then new dashboard.Models.StatsWidget attrs, options
       else new dashboard.Models.Widget attrs, options

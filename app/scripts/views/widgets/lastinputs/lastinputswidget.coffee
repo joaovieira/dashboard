@@ -7,20 +7,6 @@ class dashboard.Views.LastInputsWidgetView extends dashboard.Views.WidgetView
   events: _.extend
       'click .fa-star': 'addFavorite'
     , dashboard.Views.WidgetView.prototype.events
-  
-    
-  initialize: ->
-    @$el.attr 'id', @model.cid
-      
-    # bind model events
-    @model.on 'update', @refresh
-    
-    @model.refresh()
-    
-    
-  render: ->
-    super()
-    this
     
     
   refresh: =>

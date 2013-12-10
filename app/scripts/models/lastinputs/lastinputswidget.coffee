@@ -9,7 +9,7 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
     site: ''                          # set unpon addition
     name: ''                          # set unpon addition
     refreshTime: 0                    # set unpon addition
-  
+         
   
   constructor: (attrs, options) ->
     @collection = options.collection
@@ -18,8 +18,7 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
     #@inputs.on 'change', @save
     
     Backbone.Model.apply this, arguments
-         
-  
+
   validate: (attrs) ->
     invalid = []
     invalid.push 'name': 'Name cannot be blank' if not attrs.name

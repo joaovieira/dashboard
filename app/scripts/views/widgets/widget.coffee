@@ -16,13 +16,12 @@ class dashboard.Views.WidgetView extends Backbone.View
     
   
   initialize: ->
-    @className += @model.get 'type'
+    @$el.attr 'id', @model.cid
     
-	  # bind events
-    @model.on 'change', @render
-    @model.on 'remove', @unrender
-    
-    @defaultSize = [1,1]
+    # bind model events
+    @model.on 'update', @refresh
+
+    @model.refresh()
 
 
   render: =>
@@ -32,6 +31,7 @@ class dashboard.Views.WidgetView extends Backbone.View
       @$('select').selectpicker()
       @$('.fa-tooltip').tooltip placement: 'bottom'
     this
+    
     
   highlight: (e) ->
     @$(e.currentTarget).toggleClass('active').siblings().removeClass 'active'
