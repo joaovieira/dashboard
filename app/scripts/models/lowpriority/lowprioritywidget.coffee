@@ -1,16 +1,19 @@
 'use strict';
 
-class dashboard.Models.LinksOccupationWidget extends dashboard.Models.Widget
+class dashboard.Models.LowPriorityWidget extends dashboard.Models.Widget
 
   defaults:
-    icon: "fa-dashboard"
-    type: 'links-occupation'
+    icon: "fa-bar-chart-o"
+    type: 'low-priority'
     size: [1,1]
-    site: ''                          # set unpon addition
-    name: ''                          # set unpon addition
-    refreshTime: 0                    # set unpon addition
-  
-  
+    site: ''                          # set uppon addition
+    name: ''                          # set uppon addition
+    refreshTime: 0                    # set uppon addition
+    
+    # to delete
+    previousInputs: [3,5,7,4,6,3,2,4,5]
+	
+	
   constructor: (attrs, options) ->
     @collection = options.collection
     @inputs = new dashboard.Collections.LastInputs attrs.inputs
@@ -18,8 +21,8 @@ class dashboard.Models.LinksOccupationWidget extends dashboard.Models.Widget
     #@inputs.on 'change', @save
     
     Backbone.Model.apply this, arguments
-         
-  
+	
+
   validate: (attrs) ->
     invalid = []
     invalid.push 'name': 'Name cannot be blank' if not attrs.name
@@ -43,13 +46,23 @@ class dashboard.Models.LinksOccupationWidget extends dashboard.Models.Widget
       setTimeout @refresh, @get 'refreshTime'  
   
   
-  getAverageOccupation: ->
-    totalOccupation = @inputs.reduce (memo, value) ->
-      memo + value.get 'occupation'
-    , 0
-    Math.round totalOccupation / @inputs.length
-    
-    
+  getLastInputs: (timeElapsed) ->
+    # filter inputs by date (eg. last hour)
+    @inputs
+	
+	
+  getAverageSeries: (timeInterval) ->
+    # map inputs by interval
+    average = @get 'previousInputs'
+    average.concat [@inputs.length]
+	
+
+  getAverageDifference: ->
+    previous = @get('previousInputs')
+    totalAverage = (previous.reduce (x,y) -> x + y) / previous.length
+    difference = @getLastInputs(1) / totalAverage - 1
+    difference / 100
+
   parse: (data, options) ->
     @inputs.reset data.inputs
     data

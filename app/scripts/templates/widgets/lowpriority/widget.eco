@@ -1,0 +1,33 @@
+<div class="tabbable tabs-below priority-tabs">
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="graph">
+      <canvas id="chart" width="220" height="120"></canvas>
+    </div>
+    <div class="tab-pane" id="top">
+      <table class="table table-striped table-hover">
+      </table>
+    </div>
+  </div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active">
+      <a href="#" data-target="#graph" data-toggle="tab">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-adjust fa-stack-1x fa-lg fa-flip-horizontal"></i>
+          <i class="fa fa-adjust fa-stack-1x fa-lg fa-rotate-90"></i>
+        </span><br/>
+        GRAPH
+      </a>
+    </li>
+    <li>
+      <a href="#" data-target="#top" data-toggle="tab">
+        <span class="fa-stack fa-lg simple">
+          <i class="fa fa-bars fa-stack-1x fa-lg"></i>
+        </span><br/>
+        TOP
+      </a>
+    </li>
+  </ul>
+</div>

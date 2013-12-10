@@ -143,6 +143,7 @@
 
 /* category thumbnails */
 
-img.network, img.general, img.favorites, img.last-inputs, img.links-occupation{
+img.network, img.general, img.stats,
+img.favorites, img.last-inputs, img.links-occupation, img.low-priority{
   content: image-url("thumbnail.png");
 }

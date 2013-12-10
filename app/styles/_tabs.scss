@@ -15,7 +15,6 @@
   li{
     margin-bottom: 0;
     border: 0;
-    width: calc(100%/3);
     
     &.active{   
       background-color: #0b3657; /* fallback color */
@@ -69,5 +68,18 @@
         }
       }
     }
+  }
+}
+
+
+.link-tabs{
+  li {
+    width: calc(100%/3);
+  }
+}
+
+.priority-tabs{
+  li {
+    width: calc(100%/2);
   }
 }
