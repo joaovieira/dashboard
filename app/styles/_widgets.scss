@@ -217,6 +217,23 @@ handle, .clickable{
   }
 }
 
+.table#stats {
+  tr {
+    > th,
+    > td {
+      &:last-child{
+          text-align: left;
+          padding-right: auto;
+        }
+    }
+
+    > th{
+      background-color: #ccc;
+      color: white;
+    }
+  }
+}
+
 
 /* icons */
 

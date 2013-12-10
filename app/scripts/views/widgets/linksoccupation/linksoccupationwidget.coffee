@@ -9,20 +9,6 @@ class dashboard.Views.LinksOccupationWidgetView extends dashboard.Views.WidgetVi
       'click .fa-share': 'share'
       'click #link-tabs a': 'showTab'
     , dashboard.Views.WidgetView.prototype.events
-  
-    
-  initialize: ->
-    @$el.attr 'id', @model.cid
-      
-    # bind model events
-    @model.on 'update', @refresh
-    
-    @model.refresh()
-    
-    
-  render: ->
-    super()
-    this
     
     
   refresh: =>

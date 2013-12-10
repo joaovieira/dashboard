@@ -85,6 +85,7 @@ class dashboard.Views.WidgetsView extends Backbone.View
       when 'last-inputs' then new dashboard.Views.LastInputsWidgetView model: model
       when 'favorites' then new dashboard.Views.FavoritesWidgetView model: model
       when 'links-occupation' then new dashboard.Views.LinksOccupationWidgetView model: model
+      when 'stats' then new dashboard.Views.StatsWidgetView model: model
       when 'add' then new dashboard.Views.AddWidgetView model: model
       else new dashboard.Views.WidgetView model: model
         

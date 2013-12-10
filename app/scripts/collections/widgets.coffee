@@ -13,4 +13,5 @@ class dashboard.Collections.Widgets extends Backbone.Collection
       when 'favorites' then new dashboard.Models.FavoritesWidget attrs, options
       when 'links-occupation' then new dashboard.Models.LinksOccupationWidget attrs, options
       when 'add' then new dashboard.Models.AddWidget attrs, options
+      when 'stats' then new dashboard.Models.StatsWidget attrs, options
       else new dashboard.Models.Widget attrs, options
