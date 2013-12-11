@@ -158,6 +158,10 @@ handle, .clickable{
 }
 
 .widget-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   i{
     color: $title-color;
   }
