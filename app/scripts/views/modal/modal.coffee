@@ -76,7 +76,7 @@ class dashboard.Views.ModalView extends Backbone.View
   createWidget: (e) ->
     e.preventDefault()
     
-    data = Backbone.Syphon.serialize(this)
+    data = Backbone.Syphon.serialize e.target
     options =
       collection: dashboard.appView.widgets.collection
       validate: true
@@ -118,7 +118,7 @@ class dashboard.Views.ModalView extends Backbone.View
   searchWidgets: (e) ->
     e.preventDefault()
 
-    data = Backbone.Syphon.serialize this
+    data = Backbone.Syphon.serialize e.target
     regexSearch = new RegExp data.text, 'i'
 
     # search widgets by title
