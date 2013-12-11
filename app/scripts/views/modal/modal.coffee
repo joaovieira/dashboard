@@ -6,7 +6,8 @@ class dashboard.Views.ModalView extends Backbone.View
   
   events: ->
     "submit #createWidget": "createWidget"
-    "change .form-group.has-error .form-control": "removeError"  
+    "submit #searchWidgets": "searchWidgets"
+    "change .form-group.has-error .form-control": "removeError"
   
   
   initialize: ->
@@ -52,7 +53,8 @@ class dashboard.Views.ModalView extends Backbone.View
     if @widget
       partial = @widgetCategoryView().render().el
     else if @category
-      partial = @thumbnailTemplate thumbnails: @category.widgets.models, base: @category.get 'name'
+      thumbnails = (widget.set 'category', @category.get('name'), {silent: true} for widget in @category.widgets.models)
+      partial = @thumbnailTemplate thumbnails: thumbnails
     else
       partial = @thumbnailTemplate thumbnails: @categories.models
     
@@ -111,3 +113,34 @@ class dashboard.Views.ModalView extends Backbone.View
     
   returnHome: ->
     dashboard.router.navigate ''
+
+
+  searchWidgets: (e) ->
+    e.preventDefault()
+
+    data = Backbone.Syphon.serialize this
+    regexSearch = new RegExp data.text, 'i'
+
+    # search widgets by title
+    searchResults = []
+    
+    @categories.each (category) ->
+      category.widgets.each (widget) ->
+        searchResults.push widget.set 'category', category.get('name'), {silent: true} if ~widget.get('title').search regexSearch
+
+    # set breadcrumbs
+    breadcrumbs = @$('.breadcrumb').html "<li><a href='#new'>Add widget</a></li>"
+    breadcrumbs.append "<li class='active'>Search for '#{data.text}'</li>"
+
+    # set content
+    if searchResults.length
+      partial = @thumbnailTemplate thumbnails: searchResults
+    else
+      partial = "<div id='empty-search'>No widget match your search criteria.</div>"
+
+    @$('.modal-body-content').fadeTo 400, 0, ->
+      $(this).html(partial).find('select').selectpicker()
+      $(this).fadeTo(400, 1)
+
+    # navigate to dead route in order to change fragment and be able to get back to #new    
+    dashboard.router.navigate 'search'
