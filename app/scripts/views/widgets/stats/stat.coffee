@@ -6,6 +6,6 @@ class dashboard.Views.StatView extends Backbone.View
   className: 'input'
   template: JST['app/scripts/templates/widgets/stats/rowinput']
   
-  render: ->
-    @$el.html @template input: @model
+  render: (index) ->
+    @$el.html @template input: @model, index: index
     this

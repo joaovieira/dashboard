@@ -1,7 +1,6 @@
 .tabs-below {
   > .nav-tabs {
     background-color: #246699; /* fallback color */
-    background-image: image-url("tab_fb.png"); /* fallback image */
     @include background-image(linear-gradient(#387fb5, #246699));
 
     position: absolute;
@@ -18,7 +17,6 @@
     
     &.active{   
       background-color: #0b3657; /* fallback color */
-      background-image: image-url("tab_selected_fb.png"); /* fallback image */
       @include background-image(linear-gradient(#255981, #0b3657));
       
       a{
@@ -60,11 +58,11 @@
       
       &:hover{
         background: transparent;
-        color: $font-color;
+        color: $table-bg-hover;
         border: 0;
         
         i{
-          color: $font-color;
+          color: $table-bg-hover;
         }
       }
     }

@@ -9,6 +9,12 @@ class dashboard.Views.FavoritesWidgetView extends dashboard.Views.WidgetView
     , dashboard.Views.WidgetView.prototype.events
 
 
+  render: ->
+    super()
+    @refresh()
+    this
+
+
   refresh: =>
     if @model.inputs.length
       @$('#inputs').html '<table class="table table-striped table-hover"></table>'

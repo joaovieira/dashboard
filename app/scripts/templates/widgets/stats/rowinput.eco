@@ -1,4 +1,4 @@
-<td class="title"><%= @input.get 'title' %></td>
+<td><%= @index %></td>
 <% for data in @input.get 'data': %>
 	<td><%= data.value %></td>
 <% end %>

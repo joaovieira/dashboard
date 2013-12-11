@@ -2,7 +2,7 @@
   <tr>
     <th></th>
     <% for label in @labels: %>
-      <th><%= label.toUpperCase() %></th>
+      <th><%= label %></th>
     <% end %>
   </tr>
 </table>

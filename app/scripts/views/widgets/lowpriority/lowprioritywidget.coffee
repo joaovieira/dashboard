@@ -30,6 +30,7 @@ class dashboard.Views.LowPriorityWidgetView extends dashboard.Views.WidgetView
     
     # set chart
     @drawChart()
+    @drawDifference()
     
     # set list
     @model.inputs.each (input) ->
@@ -41,8 +42,8 @@ class dashboard.Views.LowPriorityWidgetView extends dashboard.Views.WidgetView
   drawChart: =>
     context = $("#graph #chart").get(0).getContext "2d"
     
-    dataSeries = @model.getAverageSeries(1)
-    averageDifference = @model.getAverageDifference()
+    dataSeries = @model.getAverageSeries()
+    average = @model.getAverage()
 	
     data =
       labels: ('' for x in dataSeries)
@@ -60,10 +61,21 @@ class dashboard.Views.LowPriorityWidgetView extends dashboard.Views.WidgetView
       datasetFill: false
       scaleOverride: true
       scaleSteps: 2
-      scaleStepWidth: 5
+      scaleStepWidth: average
       scaleStartValue: 0
       
     new Chart(context).Line data, options
+
+
+  drawDifference: =>
+    lastInputs = @model.getLastInputs()
+    averageDifference = @model.getAverageDifference()
+    arrow = if averageDifference.difference > 0 then "up" else "down"
+
+    @$('.interval .number').text lastInputs.inputs.length
+    @$('.interval .scale').text lastInputs.scale
+    @$('.percentage .quantity').html "<i class='fa fa-sort-#{arrow}'></i> #{averageDifference.difference}<span>%</span>"
+    @$('.percentage .quality').text averageDifference.text
 
 
   showTab: (e) ->

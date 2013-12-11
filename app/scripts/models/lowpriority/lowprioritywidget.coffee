@@ -11,7 +11,7 @@ class dashboard.Models.LowPriorityWidget extends dashboard.Models.Widget
     refreshTime: 0                    # set uppon addition
     
     # to delete
-    previousInputs: [3,5,7,4,6,3,2,4,5]
+    previousInputs: [2,5,8,5,3,3,2,8,5,3,9,7,4,2,5,7]
 	
 	
   constructor: (attrs, options) ->
@@ -46,22 +46,30 @@ class dashboard.Models.LowPriorityWidget extends dashboard.Models.Widget
       setTimeout @refresh, @get 'refreshTime'  
   
   
-  getLastInputs: (timeElapsed) ->
+  getLastInputs: ->
     # filter inputs by date (eg. last hour)
-    @inputs
+    inputs: @inputs
+    scale: 'last hour'
 	
 	
-  getAverageSeries: (timeInterval) ->
+  getAverageSeries: ->
     # map inputs by interval
     average = @get 'previousInputs'
     average.concat [@inputs.length]
-	
+
+
+  getAverage: ->
+    previous = @get('previousInputs')
+    average = (previous.reduce (x,y) -> x + y) / previous.length
+
 
   getAverageDifference: ->
-    previous = @get('previousInputs')
-    totalAverage = (previous.reduce (x,y) -> x + y) / previous.length
-    difference = @getLastInputs(1) / totalAverage - 1
-    difference / 100
+    average = @getAverage()
+    diff = @getLastInputs().inputs.length / average - 1
+
+    difference: Math.round diff * 100
+    text: 'above daily average'
+
 
   parse: (data, options) ->
     @inputs.reset data.inputs

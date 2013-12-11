@@ -228,10 +228,69 @@ handle, .clickable{
     }
 
     > th{
-      background-color: #ccc;
+      background-color: #7f888f;
       color: white;
     }
   }
+}
+
+#graph {
+  .grid, #chart{
+    position: absolute;
+    top: 50%;
+  }
+
+  .grid{
+    border-bottom: 1px dashed rgba(38,143,138,0.3);
+    width: 100%;
+    margin-top: -37px;
+  }
+
+  #chart{
+    left: 50%;
+    margin-top: -70px;
+    margin-left: -105px;
+  }
+}
+
+.difference {
+  background-color: #25a49d; /* fallback color */
+  @include background-image(linear-gradient(#24beb4, #268f8a));
+  height: 65px;
+  width: 100%;
+  position: absolute;
+  bottom: 35px; 
+  display: table;
+
+  > div {
+    display: table-cell;
+    width: 50%;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+
+    .number, .quantity{
+      font-size: $font-size-big;
+
+      i {
+        color: white;
+        position: relative;
+        top: 2px;
+      }
+
+      i,span{
+        font-size: 16px;
+      }
+    }
+    
+    .scale, .quality{
+      font-size: $font-size-xsmall;
+    }
+
+    .number {
+      font-weight: bold;
+    }
+  } 
 }
 
 

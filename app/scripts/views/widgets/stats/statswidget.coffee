@@ -10,7 +10,7 @@ class dashboard.Views.StatsWidgetView extends dashboard.Views.WidgetView
     @$('#inputs').html @widgetTemplate labels: @model.get 'labels'
 
     # set list
-    @model.inputs.each (input) ->
+    @model.inputs.each (input, index) ->
       inputView = new dashboard.Views.StatView model: input
-      @$('table').append inputView.render().el
+      @$('table').append inputView.render(index + 1).el
     , this
