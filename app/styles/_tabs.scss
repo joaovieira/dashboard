@@ -1,4 +1,13 @@
 .tabs-below {
+  display: table;
+  width: 100%;
+  height: 100%;
+
+  > .tab-content{
+    overflow: auto;
+    height: calc(100% - 35px);
+  }
+
   > .nav-tabs {
     background-color: #246699; /* fallback color */
     @include background-image(linear-gradient(#387fb5, #246699));
@@ -8,7 +17,6 @@
     border: 0;
     width: 100%;
     height: 35px;
-    z-index: 1050;
   }
   
   li{
