@@ -9,12 +9,19 @@ class dashboard.Views.LinksOccupationWidgetView extends dashboard.Views.WidgetVi
       'click .fa-share': 'share'
       'click #link-tabs a': 'showTab'
     , dashboard.Views.WidgetView.prototype.events
-    
+  
+
+  initialize: ->
+    super()
+    @model.on 'resize', @resize
+    @
+
     
   refresh: =>
     @$('#inputs').html @widgetTemplate
     
     # set chart
+    @resizeCanvas()
     @drawChart()
     
     # set list
@@ -24,8 +31,23 @@ class dashboard.Views.LinksOccupationWidgetView extends dashboard.Views.WidgetVi
     , this
 
 
+  resizeCanvas: ->
+    chartArea = @$('#occupation')
+    canvas = chartArea.find '#chart'
+
+    size = @model.get 'size'
+    if size[0] is 2 and size[1] is 2
+      canvas.attr 'width', '240px'
+      canvas.attr 'height', '240px'
+      chartArea.addClass 'big'
+    else
+      canvas.attr 'width', '120px'
+      canvas.attr 'height', '120px'
+      chartArea.removeClass 'big'
+
+
   drawChart: =>
-    context = $("#occupation #chart").get(0).getContext "2d"
+    context = @$("#occupation #chart").get(0).getContext "2d"
     
     occupation = @model.getAverageOccupation()
     data = [
@@ -44,3 +66,8 @@ class dashboard.Views.LinksOccupationWidgetView extends dashboard.Views.WidgetVi
   showTab: (e) ->
     e.preventDefault()
     $(this).tab 'show'
+
+
+  resize: =>
+    @resizeCanvas()
+    @drawChart()

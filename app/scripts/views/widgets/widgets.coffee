@@ -106,19 +106,20 @@ class dashboard.Views.WidgetsView extends Backbone.View
       
       
   saveSize: (e, ui, widget) =>
-    size = [widget.data('sizex'), widget.data('sizey')]
+    size = [parseInt(widget.attr('data-sizex')), parseInt(widget.attr('data-sizey'))]
     id = widget.attr 'id'
-    widget = @collection.get id
-    widget.set 'size', size
-    widget.save()
+    widgetModel = @collection.get id
+    widgetModel.set 'size', size
+    widgetModel.save()
+    widgetModel.resize?()
     
     
   savePosition: (e, ui) =>
     widget = ui.$player
     position = 
-      col: widget.data 'col'
-      row: widget.data 'row'
+      col: parseInt widget.attr 'data-col'
+      row: parseInt widget.attr 'data-row'
     id = widget.attr 'id'
-    widget = @collection.get id
-    widget.set 'position', position
-    widget.save()
+    widgetModel = @collection.get id
+    widgetModel.set 'position', position
+    widgetModel.save()

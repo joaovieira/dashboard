@@ -27,7 +27,7 @@ class dashboard.Views.WidgetView extends Backbone.View
   render: =>
     @$el.html @template widget: @model
     if @settingsTemplate?
-      @$('.back .widget-content').html @settingsTemplate()
+      @$('.back').hide().find('.widget-content').html @settingsTemplate()
       @$('select').selectpicker()
       @$('.fa-tooltip').tooltip placement: 'bottom'
     this
@@ -37,12 +37,26 @@ class dashboard.Views.WidgetView extends Backbone.View
     @$(e.currentTarget).toggleClass('active').siblings().removeClass 'active'
     
     
-  editSettings: (e) ->
-    @$(e.currentTarget).closest('.widget').toggleClass 'flip'
+  editSettings: (e) =>
+    widget = @$(e.currentTarget).closest '.widget'
+    transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend'
+
+    # toggle flip and hide back when transition is over
+    widget.find('.back').show 50, ->
+      widget.toggleClass('flip').on transitionEnd, ->
+        $(this).off transitionEnd
+        widget.find('.front').hide()
   
   
-  viewWidget: (e) ->
-    @$(e.currentTarget).closest('.widget').removeClass 'flip'
+  viewWidget: (e) =>
+    widget = @$(e.currentTarget).closest '.widget'
+    transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend'
+    
+    # toggle flip and hide back when transition is over
+    widget.find('.front').show 50, =>
+      widget.removeClass('flip').on transitionEnd, ->
+        $(this).off transitionEnd
+        widget.find('.back').hide()
 
 
   unrender: =>

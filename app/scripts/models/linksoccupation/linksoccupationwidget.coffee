@@ -59,3 +59,7 @@ class dashboard.Models.LinksOccupationWidget extends dashboard.Models.Widget
     attrs = _.clone @attributes
     attrs.inputs = @inputs.toJSON()
     attrs
+
+
+  resize: ->
+    @trigger 'resize'
