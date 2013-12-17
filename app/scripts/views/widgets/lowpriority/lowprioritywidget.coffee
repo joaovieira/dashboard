@@ -12,12 +12,9 @@ class dashboard.Views.LowPriorityWidgetView extends dashboard.Views.WidgetView
   
     
   initialize: ->
-    @$el.attr 'id', @model.cid
-      
-    # bind model events
-    @model.on 'update', @refresh
-    
-    @model.refresh()
+    super()
+    @model.on 'resize', @resize
+    @
     
     
   render: ->
@@ -29,6 +26,7 @@ class dashboard.Views.LowPriorityWidgetView extends dashboard.Views.WidgetView
     @$('#inputs').html @widgetTemplate
     
     # set chart
+    @resizeCanvas()
     @drawChart()
     @drawDifference()
     
@@ -37,6 +35,26 @@ class dashboard.Views.LowPriorityWidgetView extends dashboard.Views.WidgetView
       inputView = new dashboard.Views.LowPriorityView model: input
       @$('#top table').append inputView.render().el
     , this
+
+
+  resizeCanvas: ->
+    chartArea = @$('#graph')
+    canvas = chartArea.find '#chart'
+
+    canvas.attr 'height', '80px'
+    chartArea.removeClass 'tall'
+
+    size = @model.get 'size'
+    if size[0] is 2
+      canvas.attr 'width', '460px'
+      chartArea.addClass 'wide'
+
+      if size[1] is 2
+        canvas.attr 'height', '300px'
+        chartArea.addClass 'tall'
+    else
+      canvas.attr 'width', '210px'  
+      chartArea.removeClass 'wide'
 
 
   drawChart: =>
@@ -81,3 +99,8 @@ class dashboard.Views.LowPriorityWidgetView extends dashboard.Views.WidgetView
   showTab: (e) ->
     e.preventDefault()
     $(this).tab 'show'
+
+
+  resize: =>
+    @resizeCanvas()
+    @drawChart()

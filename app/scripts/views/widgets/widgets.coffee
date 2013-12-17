@@ -111,7 +111,7 @@ class dashboard.Views.WidgetsView extends Backbone.View
     widgetModel = @collection.get id
     widgetModel.set 'size', size
     widgetModel.save()
-    widgetModel.resize?()
+    widgetModel.resize()
     
     
   savePosition: (e, ui) =>

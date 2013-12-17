@@ -222,13 +222,13 @@ handle, .clickable{
   }
 
   &.big #value{  
-    margin-top: -75px;
-    margin-left: -75px;
-    width: 150px;
-    height: 150px;
-    border-radius: 75px;
-    font-size: 30px;
-    line-height: 150px;
+    margin-top: -80px;
+    margin-left: -80px;
+    width: 160px;
+    height: 160px;
+    border-radius: 80px;
+    font-size: 34px;
+    line-height: 160px;
   }
   
   #chart{
@@ -280,6 +280,14 @@ handle, .clickable{
     left: 50%;
     margin-top: -70px;
     margin-left: -105px;
+  }
+
+  &.wide #chart{
+    margin-left: -230px;
+  }
+
+  &.tall #chart{
+    margin-top: -180px;
   }
 }
 

@@ -3,7 +3,7 @@
   <div class="tab-content">
     <div class="tab-pane active" id="graph">
       <div class="grid"></div>
-      <canvas id="chart" width="210" height="80">
+      <canvas id="chart">
       </canvas>
       <div class="difference">
         <div class="interval">
