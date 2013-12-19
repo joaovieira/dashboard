@@ -18,7 +18,7 @@ class dashboard.Views.AppView extends Backbone.View
 	  
 	  
 	home: ->  
-	  @$('#alert').show()
+	  @$('#alert').hide()
 	  
 	  
 	showAlert: (message) =>
