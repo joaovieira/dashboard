@@ -99,14 +99,16 @@ a, a:hover, a:visited {
   overflow: auto;
   display: table;
   table-layout: fixed;
+}
 
-  .widget-content{
-    display: table-row;
-    height: 100%;
-  }
+.widget-content{
+  display: table-row;
+  height: 100%;
 }
 
 .back{
+  display: table;
+
   .widget-header{
     border-bottom: none;
     
@@ -116,7 +118,10 @@ a, a:hover, a:visited {
   }
   
   .widget-content{
-    padding: 15px;
+    .wrapper{
+      padding: 15px;
+      overflow: auto;
+    }
     
     .widget-settings{
       .form-header, .form-control, .btn{

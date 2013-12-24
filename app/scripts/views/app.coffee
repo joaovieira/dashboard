@@ -34,3 +34,10 @@ class dashboard.Views.AppView extends Backbone.View
 	showAlert: (message) =>
 	  alert = new dashboard.Views.AlertView(message)
 	  @$('#alert').html(alert.render().el).show()
+
+
+	###
+	Prepare and show modal screen to choose widget on the passed navigation level.
+	###
+	addWidgetModal: (category = null, widget = null) ->
+ 		@modal.show category, widget

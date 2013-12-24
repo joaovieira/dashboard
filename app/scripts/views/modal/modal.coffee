@@ -35,15 +35,20 @@ class dashboard.Views.ModalView extends Backbone.View
     # init modal
     @$el.modal show: false  
     @$el.on 'hidden.bs.modal', @returnHome
-    
-    @categories.fetch()
         
   
   ###
   Show modal screen explicitly.
   ###
-  show: ->
+  show: (category, widget) ->
     @$el.modal 'show'
+
+    if not @categories.length
+      @categories.fetch
+        success: =>
+          @prepare category, widget
+    else
+      @prepare category, widget
     
   
   ###
@@ -53,7 +58,6 @@ class dashboard.Views.ModalView extends Backbone.View
   Keep breadcrumb updated and with proper back navigation.
   ###
   prepare: (category, widget) ->
-
     # try to find category and widget
     @category = @categories.findWhere name: category
     @widget = if @category then @category.widgets.findWhere name: widget

@@ -17,6 +17,17 @@ body {
   @include background(image-url("control_bg.png"));
   min-height: 36px;
   margin-bottom: 0px;
+
+  .navbar-header{
+    @include background(image-url("control_bg.png"));
+    background-size: auto 100%;
+
+    .navbar-toggle{
+      &:hover, &:focus{
+        background: rgba(246, 247, 249, .1);  
+      }
+    }
+  }
    
   .navbar-collapse{
     padding: 0px;
@@ -123,4 +134,30 @@ li#email.selected {
 
 .occupation-full{
   color: $occupation-red;
+}
+
+
+/* small navbar */
+@media (max-width: 767px) {
+  .navbar-inverse {
+    background: $add-widget-color;
+
+    .navbar-collapse{
+      .navbar-nav {
+        margin: 0px;
+
+        li {
+          width: auto;
+
+          &:hover{
+            background: $table-bg-accent;  
+          }
+        }
+      }
+
+      .icon-vertical-bar{
+        display: none;
+      }
+    }
+  }
 }

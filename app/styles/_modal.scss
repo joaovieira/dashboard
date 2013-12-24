@@ -24,6 +24,17 @@
 
 .modal-body{
   padding-bottom: 0px;
+
+  .loading{
+    width: 100%;
+    min-height: 100px;
+    text-align: center;
+
+    i{
+      color: $modal-text-color;
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .modal-title{
@@ -75,6 +86,8 @@
 
 .widget-description{
   .caption {
+    margin-bottom: 20px;
+
     h4{
       font-size: $font-size-normal;
       font-weight: normal;
@@ -143,6 +156,23 @@
 #empty-search{
   text-align: center;
   line-height: 100px;
+}
+
+
+/* mobile modal specifics */
+
+@media (max-width: 767px) {
+  .modal-top{
+    height: auto;
+
+    .search{
+      float: none;
+    }
+
+    > ol{
+      position: inherit;
+    }
+  }
 }
 
 /* category thumbnails */

@@ -45,7 +45,7 @@ class dashboard.Views.WidgetView extends Backbone.View
 
     # draw the settings inputs in the back panel, if widget supports it
     if @settingsTemplate?
-      @$('.back').hide().find('.widget-content').html @settingsTemplate()
+      @$('.back').hide().find('.widget-content .wrapper').html @settingsTemplate()
       @$('select').selectpicker()
       @$('.fa-tooltip').tooltip placement: 'bottom'
 

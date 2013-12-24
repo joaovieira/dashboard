@@ -19,7 +19,8 @@ window.dashboard =
 		
 		# init router
 		@router = new this.Routers.AppRouter()
-		Backbone.history.start {pushState: true, root: '/'}
+		#Backbone.history.start {pushState: true, root: '/'}
+		Backbone.history.start()
 
 
 ###
