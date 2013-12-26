@@ -37,7 +37,8 @@ class dashboard.Views.WidgetsView extends Backbone.View
     @collection.on 'remove', @removeWidget
 
     # init widgets
-    @collection.fetch()
+    @collection.fetch { success: => @resetFavorites() }
+
     @addAddWidget()
     
   
@@ -62,9 +63,11 @@ class dashboard.Views.WidgetsView extends Backbone.View
       # set widget in its previously save position (when loading from local storage)
       size = newWidget.model.get 'size'
       position = newWidget.model.get 'position'
+
+      col = if size[0] > @gridster.cols then @gridster.cols else size[0]
       
       # add widget in previous position or in the default
-      @gridster.add_widget newWidget.render().el, size[0], size[1], 
+      @gridster.add_widget newWidget.render().el, col, size[1], 
         position?.col ? null, position?.row ? null, newWidget.maxSize ?= []
 
     # fade in widgets once last (the add widget) is added
@@ -187,3 +190,17 @@ class dashboard.Views.WidgetsView extends Backbone.View
     widgetModel = @collection.get id
     widgetModel.set 'position', position
     widgetModel.save()
+
+
+  ###
+  Reset favorite inputs in the Favorites widget based on the favorited
+  inputs from the Last Inputs, if both are available.
+  ###
+  resetFavorites: ->
+    # Check if both widgets are available
+    if lastInputsWidget = @collection.findWhere {type: 'last-inputs'}
+      if favoritesWidget = @collection.findWhere {type: 'favorites'}
+        
+        # add input reference to favorites for each favorite in last inputs
+        favorites = lastInputsWidget.inputs.where favorite: true
+        favoritesWidget.inputs.add input for input in favorites

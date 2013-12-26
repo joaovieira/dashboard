@@ -20,8 +20,8 @@
     <div class="col-sm-8">
       <select class="form-control" id="refreshTime" name="refreshTime" placeholder="Refresh times">
         <option selected disabled>Select one</option>
-        <option value="10000">10 segundos</option>
-        <option value="30000">30 segundos</option>
+        <option value="10000">10 seconds</option>
+        <option value="30000">30 seconds</option>
       </select>
       <label class='control-label' for='refreshTime'></label>
     </div>

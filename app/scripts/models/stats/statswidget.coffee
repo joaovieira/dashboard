@@ -76,7 +76,7 @@ class dashboard.Models.StatsWidget extends dashboard.Models.Widget
   Parse data.inputs to inputs variable without triggering events.
   ### 
   parse: (data, options) ->
-    @inputs.reset data.inputs
+    @inputs.set data.inputs
     data
 
 

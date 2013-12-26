@@ -35,7 +35,7 @@ class dashboard.Models.FavoritesWidget extends dashboard.Models.Widget
       favorites = lastInputsWidget.inputs.where favorite: true
       @inputs.add input for input in favorites
             
-      @refresh if favorites.length
+      @refresh() if favorites.length
 
     Backbone.Model.apply this, arguments
   
@@ -54,7 +54,6 @@ class dashboard.Models.FavoritesWidget extends dashboard.Models.Widget
   When inputs are updated, save its data and trigger an update event to the view.
   ###
   refresh: =>  
-    @save()
     @trigger 'update'
       
   
@@ -62,7 +61,7 @@ class dashboard.Models.FavoritesWidget extends dashboard.Models.Widget
   Parse data.inputs to inputs variable without triggering events.
   ###        
   parse: (data, options) ->
-    @inputs.reset data.inputs, silent: true
+    @inputs.set data.inputs, silent: true
     data
 
 

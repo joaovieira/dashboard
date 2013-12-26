@@ -26,8 +26,6 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
     @collection = options.collection
     @inputs = new dashboard.Collections.LastInputs attrs.inputs
     
-    #@inputs.on 'change', @save
-    
     Backbone.Model.apply this, arguments
 
 
@@ -72,7 +70,7 @@ class dashboard.Models.LastInputsWidget extends dashboard.Models.Widget
   Parse data.inputs to inputs variable without triggering events.
   ###
   parse: (data, options) ->
-    @inputs.reset data.inputs
+    @inputs.set data.inputs
     data
 
 
